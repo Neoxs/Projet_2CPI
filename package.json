@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js",
+    "mongo-start": "sudo systemctl start mongod",
+    "mongo-stop": "sudo systemctl stop mongod"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +15,7 @@
     "body-parser": "^1.19.0",
     "edge.js": "^1.1.4",
     "express": "^4.17.1",
+    "express-edge": "^2.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.3",
     "validator": "^12.2.0"
