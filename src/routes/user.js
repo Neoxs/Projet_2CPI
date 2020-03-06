@@ -8,4 +8,10 @@ router.get('/', async (req, res) => {
    res.render("welcome")
 })
 
+router.post('/register', async(req, res) => {
+   console.log(req.body)
+   //const user = new User(req.body)
+   res.send(req.body)
+})
+
 module.exports = router
