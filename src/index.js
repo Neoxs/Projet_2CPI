@@ -10,10 +10,10 @@ const app = express()
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
-const partialsPath = path.join(__dirname, '../views/layouts')
+//const partialsPath = path.join(__dirname, '../views/layouts')
 
 // Setup edge engine and views location
-app.set('view engine', 'edge')
+app.set('view engine', 'edge-express')
 app.use(edge.engine)
 app.set('views', viewsPath)
 //edge.registerViews(path.join(__dirname, './views'))
