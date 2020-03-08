@@ -16,8 +16,6 @@ const viewsPath = path.join(__dirname, './views')
 app.set('view engine', 'edge-express')
 app.use(edge.engine)
 app.set('views', viewsPath)
-//edge.registerViews(path.join(__dirname, './views'))
-//edge.registerPartials(partialsPath)
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))

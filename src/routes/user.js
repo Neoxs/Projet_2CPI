@@ -4,15 +4,11 @@ const User = require('../models/user')
 const router = new express.Router()
 
 router.get('/', async (req, res) => {
-   //res.send('hellooooo')
    res.render("welcome")
 })
 
 router.get('/register', async (req, res) => {
-   //res.send('hellooooo'
-  
-   
-   res.render("auth/register", {pageTitle: "Zino"})
+   res.render("auth/register")
 })
 
 router.post('/register', async(req, res) => {
