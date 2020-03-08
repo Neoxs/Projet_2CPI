@@ -61,7 +61,7 @@
   <!--/.Navbar-->
   <div class="container justify-content-center d-flex fogo">
     
-    <div class="card col-md-8">
+    <div class="card col-md-10 toll">
       <div class="row no-gutters">
         <div class="col-md-6">
           
@@ -72,8 +72,8 @@
                     <div class="card-body">
 
                       <!-- Material form register -->
-                      <form>
-                      <p class="h4 text-center py-4">Sign up</p>
+                      <form method="POST" action="/register">
+                        <p class="h4 text-center py-4">Sign up</p>
 
                         <!-- Material input text -->
                         <div class="md-form">
@@ -94,7 +94,7 @@
                         <div class="md-form">
                           <i class="fa fa-lock prefix grey-text "></i>
                           <input type="password" id="materialFormCardPasswordEx" class="form-control">
-                          <label for="materialFormCardPasswordEx" class="font-weight-light lab1 " onclick="eventActive()">Your password</label>
+                          <label for="materialFormCardPasswordEx" class="font-weight-light lab1 ">Your password</label>
                         </div>
                         
                         <!-- Material input password -->
@@ -103,8 +103,8 @@
                           <input type="password" id="materialFormCardConfirmEx" class="form-control">
                           <label for="materialFormCardConfirmEx" class="font-weight-light lab2">Confirm your password </label>
                         </div>
-                        <div class="text-center mb-3">
-                          <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+                        <div class="text-center mb-3 butt1">
+                          <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a ">Sign in</button>
                         </div>
                       </form>
                       <!-- Material form register -->
@@ -117,12 +117,8 @@
 
           
         </div>
-        <div class="col-md-6">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+        <div class="col-md-6 dispo">
+        <!--<img src="regi.jpg" class="pho"> -->
         </div>
       </div>
     </div>
@@ -134,9 +130,9 @@
 <script src="https://c special-coloruery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="/js/register.js"></script>
-<script src="/vendors/mdb/js/mdb.min.js"></script>
 
+<script src="/vendors/mdb/js/mdb.min.js"></script>
+<script src="/js/register.js"></script>
 
 
 </body>
