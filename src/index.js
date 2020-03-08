@@ -29,8 +29,9 @@ app.use(express.static(publicDirectoryPath))
 // requiring Mongoose config
 require('./config/mongoose')
 
-// Setup routers
-const userRouter = require('./routes/user')
+// Setup routes
+const userRoute = require('./routes/user')
+const adminRoute = require('./routes/admin')
 
 
 // Setup port
@@ -38,7 +39,8 @@ const port = process.env.PORT || 3000
 
 // Registering routers
 app.use(express.json())
-app.use(userRouter)
+app.use(userRoute)
+app.use(adminRoute)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
