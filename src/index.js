@@ -16,8 +16,6 @@ const viewsPath = path.join(__dirname, './views')
 app.set('view engine', 'edge-express')
 app.use(edge.engine)
 app.set('views', viewsPath)
-//edge.registerViews(path.join(__dirname, './views'))
-//edge.registerPartials(partialsPath)
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -31,8 +29,9 @@ app.use(express.static(publicDirectoryPath))
 // requiring Mongoose config
 require('./config/mongoose')
 
-// Setup routers
-const userRouter = require('./routes/user')
+// Setup routes
+const userRoute = require('./routes/user')
+const adminRoute = require('./routes/admin')
 
 
 // Setup port
@@ -40,7 +39,8 @@ const port = process.env.PORT || 3000
 
 // Registering routers
 app.use(express.json())
-app.use(userRouter)
+app.use(userRoute)
+app.use(adminRoute)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
