@@ -11,3 +11,6 @@ document.querySelector('.lab1').addEventListener('click', zozo (xa));
 document.querySelector('.lab2').addEventListener('click', zozo (xb));
 document.querySelector('.lab3').addEventListener('click', zozo (xc));
 document.querySelector('.lab3').addEventListener('click', zozo (xd));
+document.querySelector('.form-control').addEventListener('focus', function (){
+document.querySelector('.byad').style.display = 'none';
+});
