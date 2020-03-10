@@ -1,16 +1,38 @@
 const express = require('express')
 const Product = require('../models/product')
+const Category = require('../models/category')
 
 const router = new express.Router()
 
-router.post('/add-product', async(req, res) => {
-    //res.send(req.body)
+router.get('/admin/dashboard', async(req, res) => {
+    res.render('admin.home')
+})
+
+router.post('/admin/add-category', async(req, res) => {
+    try{
+        const category = Category.create(req.body)
+        res.status(201).send(category)
+    }catch(e){
+        console.log(e.message)
+    }
+})
+
+router.get('/admin/add-product', async(req, res) => {
+    
+        const allCategories = await Category.findAll()
+        res.render('admin.addProduct', {categories: allCategories})
+    
+})
+
+router.post('/admin/add-product', async(req, res) => {
+    console.log(req.body)
+    const allCategories = await Category.findAll()
     try {
         const product = new Product(req.body)
         await product.save()
-        res.send(product)
+        res.render('admin.addProduct', {categories: allCategories, success: "the product was added successfuly"})
     }catch(e) {
-        res.send(e.message)
+       res.render('admin.addProduct', {categories: allCategories, error: e.message})
     }
 })
 

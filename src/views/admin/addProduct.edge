@@ -1,0 +1,109 @@
+@layout('layouts.appAdmin')
+@section('main-content')
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row container justify-content-center d-flex">
+                        <div class="col-lg-10">
+                            @if(error)
+                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                    <span class="badge badge-pill badge-danger">Error</span>
+                                    {{error}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>  
+                            @elseif(success)
+                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-success">Success</span>
+                                You successfully read this important alert.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @else
+                              
+                            @endif
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Add New Product</strong>
+                                </div>
+                                <form action="/admin/add-product" method="post"  class="form-horizontal">
+                                    <div class="card-body card-block">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Product title</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input" name="title" placeholder="Text" class="form-control">
+                                                <small class="form-text text-muted">This is a help text</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="select" class=" form-control-label">Select Categorie</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select name="category" id="select" class="form-control" aria-placeholder="Select a category">
+                                                    @each(category in categories)
+                                                        <option value="{{category.title}}">{{category.title}}</option>
+                                                    @endeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Price</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" id="number-input" name="price" placeholder="Value" class="form-control">
+                                                <small class="form-text text-muted">This is a help text</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Image URL</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input" name="imageURL" placeholder="Text" class="form-control">
+                                                <small class="form-text text-muted">This is a help text</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="textarea-input" class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea name="description" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        {{--  <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>  --}}
+                                    </div>
+                                </form>    
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

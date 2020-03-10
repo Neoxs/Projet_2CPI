@@ -4,8 +4,12 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
-        trim: true
+        required: true
+    },
+    category: {
+        type: String,
+        trim: true,
+        required: true
     },
     description: {
         type: String,
