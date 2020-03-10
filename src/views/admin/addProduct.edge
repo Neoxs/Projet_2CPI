@@ -46,6 +46,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <select name="category" id="select" class="form-control" aria-placeholder="Select a category">
+                                                    <option value="">Please select</option>
                                                     @each(category in categories)
                                                         <option value="{{category.title}}">{{category.title}}</option>
                                                     @endeach
@@ -85,9 +86,9 @@
                                         <button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Submit
                                         </button>
-                                        {{--  <button type="reset" class="btn btn-danger btn-sm">
+                                        <button type="reset" class="btn btn-danger btn-sm">
                                             <i class="fa fa-ban"></i> Reset
-                                        </button>  --}}
+                                        </button>
                                     </div>
                                 </form>    
                             </div>
