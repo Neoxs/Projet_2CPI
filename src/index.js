@@ -40,7 +40,7 @@ const port = process.env.PORT || 3000
 // Registering routers
 app.use(express.json())
 app.use(userRoute)
-app.use(adminRoute)
+//app.use(adminRoute)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
