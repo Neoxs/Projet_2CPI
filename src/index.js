@@ -31,7 +31,7 @@ require('./config/mongoose')
 
 // Setup routes
 const userRoute = require('./routes/user')
-const adminRoute = require('./routes/admin')
+//const adminRoute = require('./routes/admin')
 
 
 // Setup port
