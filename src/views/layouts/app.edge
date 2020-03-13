@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+        <link href="/vendors/mdb/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/registration.css" >
+        <title>{{ pageTitle || 'Document'}}</title>
+    </head>
+    <body>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark special-color">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+            
+                <!-- Links -->
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item active fog">
+                    <a class="nav-link " href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    </li>
+                    <li class="nav-item fog">
+                    <a class="nav-link " href="#">categorie</a>
+                    </li>
+                    <li class="nav-item fog">
+                        <a class="nav-link " href="#">contacts</a>
+                    </li>
+                    
+                    <li class="nav-item ">
+                    <a class="nav-link btn btn-outline-primary waves-effect  " href="#">log in</a>
+                    </li>
+                    <li class="nav-item cart"> <i class="fas fa-shopping-cart kber"></i></li>
+            
+                    <!-- Dropdown -->
+                </ul>
+                <!-- Links -->
+        
+                <form class="form-inline soso">
+                    <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <i class="fas fa-search byad  "></i>
+                    </div>
+                </form>
+            </div>
+            <!-- Collapsible content -->
+            
+        </nav>
+            <!--/.Navbar-->
+        @!section('body')
+            
+        <footer>
+            This is footer
+        </footer>
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/vendors/mdb/js/mdb.min.js"></script>
+        <script src="/js/register.js"></script>
+    </body>
+
+</html>
+    

@@ -31,7 +31,7 @@ require('./config/mongoose')
 
 // Setup routes
 const userRoute = require('./routes/user')
-const adminRoute = require('./routes/admin')
+//const adminRoute = require('./routes/admin')
 
 
 // Setup port
@@ -40,7 +40,7 @@ const port = process.env.PORT || 3000
 // Registering routers
 app.use(express.json())
 app.use(userRoute)
-app.use(adminRoute)
+//app.use(adminRoute)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)

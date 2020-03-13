@@ -1,4 +1,8 @@
-
+.toll {
+    padding: 0%;
+    overflow: hidden;
+    border-radius: 8px;
+}
 .fog {
     padding-top: 2.5%;
 }
@@ -26,21 +30,31 @@ color: #4285f4;
 }
 .fogo {
     margin-top: 40px;
+    padding-bottom: 40px;
+  
 }
 
 .pho {
    width: 100%;
-   height: 100%;
+    height: 100%; 
 }
 .butt1{
-    margin-top: 100px ;
+   margin-top: 40px ;
 }
 .dispo {
-    background-image: url(../img/regi.jpg);
-    background-size: 100%;
+    background-image: url(regi.jpg);
+     background-size:cover ; 
+    background-repeat: no-repeat;
+
 }
 
 @media only screen and (max-width: 768px) {
 .dispo {
     display: none;
 }}
+
+@media only screen and (min-width: 1080px) {
+    .fogo {
+        height: 617px;
+    }
+}
