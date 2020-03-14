@@ -54,6 +54,32 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+userSchema.methods.addToCart = function (product) {
+    const cartProductIndex = this.cart.items.findIndex(cp => {
+        return cp.productId.toString() === product._id.toString()
+    })
+    //console.log(cartProductIndex)
+
+    let newQuantity = 1
+    const  updatedCartItems = [...this.cart.items]
+    //console.log(updatedCartItems)
+
+    if (cartProductIndex >= 0) {
+        newQuantity = this.cart.items[cartProductIndex].quantity + 1
+        updatedCartItems[cartProductIndex].quantity = newQuantity
+    }else{
+        updatedCartItems.push({
+            productId: product._id,
+            quantity: newQuantity
+        })
+    }
+    const updatedCart = {
+        items: updatedCartItems
+    }
+    this.cart = updatedCart
+    return this.save()
+}
+
 // Hash the plain text password before saving
 userSchema.pre('save', async function (next) {
     const user = this
