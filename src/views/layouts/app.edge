@@ -4,8 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+        <!-- Material Design Bootstrap -->
         <link href="/vendors/mdb/css/mdb.min.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="/css/registration.css" >
         <title>{{ pageTitle || 'Document'}}</title>
     </head>
@@ -33,7 +40,7 @@
                     </a>
                     </li>
                     <li class="nav-item fog">
-                    <a class="nav-link " href="#">categorie</a>
+                    <a class="nav-link " href="#">categories</a>
                     </li>
                     <li class="nav-item fog">
                         <a class="nav-link " href="#">contacts</a>
@@ -191,12 +198,19 @@
 
         </footer>
             
-        <script src="/js/jquery-3.4.1.min.js"></script>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/vendors/mdb/js/mdb.min.js"></script>
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
         <script src="/js/register.js"></script>
         <script src="/js/home.js"></script>
+        @if(pageTitle == "register")
+            <script src="/js/logic/index.js"></script>
+        @endif
     </body>
 
 </html>
