@@ -1,16 +1,19 @@
-// configuration
+//require needed modules
+const express = require('express')
 const path = require('path')
 const edge = require('express-edge')
 const bodyParser = require("body-parser")
+const session = require('express-session');
 
-// Express configuration
-const express = require('express')
+
+
 const app = express()
+
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
-//const partialsPath = path.join(__dirname, '../views/layouts')
+
 
 // Setup edge engine and views location
 app.set('view engine', 'edge-express')
@@ -29,7 +32,16 @@ app.use(express.static(publicDirectoryPath))
 // requiring Mongoose config
 require('./config/mongoose')
 
-// Setup routes
+// Express session
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
+  })
+)
+
+// Routes
 const userRoute = require('./routes/user')
 //const adminRoute = require('./routes/admin')
 

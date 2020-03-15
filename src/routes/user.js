@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const Product = require('../models/product')
+const passport = require('passport')
 //const auth = require('../middleware/auth')
 const router = new express.Router()
 
@@ -37,6 +38,7 @@ router.get('/register', async (req, res) => {
    })
 })
 
+// Register
 router.post('/register', async(req, res) => {
    console.log(req.body)
    const user = new User(req.body)
@@ -49,6 +51,21 @@ router.post('/register', async(req, res) => {
       res.status(400).send()
    }
 })
+
+// Login
+router.get('/login', (req, res) => {
+   res.render("auth/login")
+});
+
+router.post('/login', async (req, res) => {
+
+
+})
+ 
+// Logout
+router.get('/logout', async(req, res) => {
+
+});
 
 router.post('/cart', async(req,res) => {
    const prodId = req.body.productId
