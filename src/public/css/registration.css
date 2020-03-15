@@ -48,6 +48,18 @@ color: #4285f4;
 
 }
 
+.feet{
+    
+    background-color: #37474f;
+}
+.bono {
+    height: 200px;
+    border: solid 1px black;
+}
+.poop:hover {
+    color: blue;
+}
+
 @media only screen and (max-width: 768px) {
 .dispo {
     display: none;
@@ -57,4 +69,16 @@ color: #4285f4;
     .fogo {
         height: 617px;
     }
+}
+@media only screen and (max-width: 768px){
+    
+    .lili {
+        display: inline;
+    }
+    .lolo {
+        display: inline-block;
+        padding-right: 20px;
+        
+    }
+    
 }
