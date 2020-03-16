@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const Product = require('../models/product')
-//const auth = require('../middleware/auth')
+const isAuth = require('../middlewares/isAuth')
 const router = new express.Router()
 
 
@@ -32,7 +32,7 @@ router.get('/product/:productId', async (req, res) => {
 })
 
 // rendering register view
-router.get('/register', async (req, res) => {
+router.get('/register', isAuth, async (req, res) => {
    res.render("auth/register", {
       pageTitle: "register",
       path: '/register',
@@ -41,9 +41,9 @@ router.get('/register', async (req, res) => {
 })
 
 // Register
-router.post('/register', async(req, res) => {
+router.post('/register', isAuth, async(req, res) => {
    const { username, email, password, confirmPassword } = req.body
-   console.log(req.body)
+   //console.log(req.body)
    const isValid = (password === confirmPassword)
 
    if(!isValid) {
@@ -73,7 +73,7 @@ router.post('/register', async(req, res) => {
 })
 
 // Login
-router.get('/login', (req, res) => {
+router.get('/login', isAuth, (req, res) => {
    res.render("auth/login", {
       path: '/login',
       pageTitle: 'Login',
@@ -82,11 +82,12 @@ router.get('/login', (req, res) => {
    })
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isAuth, async (req, res) => {
    try {
       const user = await User.findByCredentials(req.body.email, req.body.password)
       req.session.isAuthenticated = true
       req.session.user = user.toJSON()
+      await req.session.save()
       res.redirect('/')
 
    }catch(e){
@@ -102,11 +103,13 @@ router.post('/login', async (req, res) => {
  
 // Logout
 router.post('/logout', async(req, res) => {
-   req.session.destroy(err => {
-      console.log(err)
+   try {
+      await req.session.destroy()
       res.redirect('/')
-   })
-});
+   }catch(e){
+      console.log(e.message)
+   }
+})
 
 router.post('/cart', async(req,res) => {
    const prodId = req.body.productId
