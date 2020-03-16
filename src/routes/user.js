@@ -1,7 +1,8 @@
 const express = require('express')
 const User = require('../models/user')
 const Product = require('../models/product')
-const isAuth = require('../middlewares/isAuth')
+const isnAuth = require('../middlewares/isAuth')
+const authController = require('../controllers/auth')
 const router = new express.Router()
 
 
@@ -31,85 +32,19 @@ router.get('/product/:productId', async (req, res) => {
    }
 })
 
-// rendering register view
-router.get('/register', isAuth, async (req, res) => {
-   res.render("auth/register", {
-      pageTitle: "register",
-      path: '/register',
-      isAuthenticated: req.session.isAuthenticated
-   })
-})
+//Rendering register view
+router.get('/register', isnAuth, authController.getSignup)
 
-// Register
-router.post('/register', isAuth, async(req, res) => {
-   const { username, email, password, confirmPassword } = req.body
-   //console.log(req.body)
-   const isValid = (password === confirmPassword)
-
-   if(!isValid) {
-      res.render('auth/register', {
-         pageTitle: 'Signup',
-         path: '/register',
-         isAuthenticated: req.session.isAuthenticated,
-         error: 'Password does not match'
-      })
-   } else {
-      delete req.body.confirmPassword
-      const user = new User(req.body)
-
-      try {
-            await user.save()
-            res.redirect('/login')
-      } catch (e) {
-            res.render('auth/register', {
-               pageTitle: 'Signup',
-               path: '/register',
-               isAuthenticated: req.session.isAuthenticated,
-               error: e.message
-            })
-      }
-   }
-
-})
+//Register
+router.post('/register', isnAuth, authController.postSignup)
 
 // Login
-router.get('/login', isAuth, (req, res) => {
-   res.render("auth/login", {
-      path: '/login',
-      pageTitle: 'Login',
-      isAuthenticated: req.session.isAuthenticated,
-      user: req.session.user
-   })
-});
+router.get('/login', isnAuth, authController.getLogin);
 
-router.post('/login', isAuth, async (req, res) => {
-   try {
-      const user = await User.findByCredentials(req.body.email, req.body.password)
-      req.session.isAuthenticated = true
-      req.session.user = user.toJSON()
-      await req.session.save()
-      res.redirect('/')
-
-   }catch(e){
-      res.render('auth/login', {
-         path: '/login',
-         pageTitle: 'Login',
-         isAuthenticated: req.session.isAuthenticated,
-         user: req.session,
-         error: e.message
-      })
-   }
-})
+router.post('/login', isnAuth, authController.postLogin)
  
 // Logout
-router.post('/logout', async(req, res) => {
-   try {
-      await req.session.destroy()
-      res.redirect('/')
-   }catch(e){
-      console.log(e.message)
-   }
-})
+router.post('/logout', authController.postLogout)
 
 router.post('/cart', async(req,res) => {
    const prodId = req.body.productId
