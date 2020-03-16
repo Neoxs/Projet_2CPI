@@ -3,9 +3,10 @@ const express = require('express')
 const path = require('path')
 const edge = require('express-edge')
 const bodyParser = require("body-parser")
-const session = require('express-session');
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session)
 
-
+require('custom-env').env()
 
 const app = express()
 
@@ -31,13 +32,19 @@ app.use(express.static(publicDirectoryPath))
 
 // requiring Mongoose config
 require('./config/mongoose')
+const store =  new MongoDBStore({
+  uri: process.env.MONGODB_URI,
+  collection: 'sessions'
+})
+
 
 // Express session
 app.use(
   session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: store // u will find store variable on config/mongoose
   })
 )
 

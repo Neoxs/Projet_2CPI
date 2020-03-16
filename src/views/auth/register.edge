@@ -13,20 +13,25 @@
                   <div class="card-body">
 
                     <!-- Material form register -->
-                    <form>
+                    <form method="POST" action="/register">
                       <p class="h4 text-center py-4">Sign up</p>
 
+                      @if(error)
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                      @endif
                       <!-- Material input text -->
                       <div class="md-form">
                         <i class="fa fa-user prefix grey-text"></i>
-                        <input type="text" id="materialFormCardNameEx" class="form-control">
+                        <input type="text" name="username" id="materialFormCardNameEx" class="form-control">
                         <label for="materialFormCardNameEx" class="font-weight-light lab4">Your name</label>
                       </div>
 
                       <!-- Material input email -->
                       <div class="md-form">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="email" id="materialFormCardEmailEx" class="form-control">
+                        <input type="email" name="email" id="materialFormCardEmailEx" class="form-control">
                         <label for="materialFormCardEmailEx" class="font-weight-light lab3 ">Your email</label>
                       </div>
 
@@ -34,14 +39,14 @@
                       <!-- Material input password -->
                       <div class="md-form">
                         <i class="fa fa-lock prefix grey-text "></i>
-                        <input type="password" id="materialFormCardPasswordEx" class="form-control">
+                        <input type="password" name="password" id="materialFormCardPasswordEx" class="form-control">
                         <label for="materialFormCardPasswordEx" class="font-weight-light lab1 ">Your password</label>
                       </div>
                       
                       <!-- Material input password -->
                       <div class="md-form">
                         <i class="fa fa-exclamation-triangle prefix grey-text"></i>
-                        <input type="password" id="materialFormCardConfirmEx" class="form-control ">
+                        <input type="password" name="confirmPassword" id="materialFormCardConfirmEx" class="form-control ">
                         <label for="materialFormCardConfirmEx" class="font-weight-light lab2">Confirm your password </label>
                       </div>
                       <!-- Default checked -->
@@ -50,7 +55,7 @@
                         <label class="custom-control-label font-weight-light" for="defaultChecked2"> <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: grey;">agree on copyrights and terms</p></label> 
                          </div>
                       <div class="text-center mb-3 butt1">
-                        <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a ">Sign in</button>
+                        <button type="submit" value="submit"  class="btn blue-gradient btn-block btn-rounded z-depth-1a ">Sign in</button>
                       </div>
                        
                     </form>

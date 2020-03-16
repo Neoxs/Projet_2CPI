@@ -35,22 +35,30 @@
                 <!-- Links -->
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item active fog">
-                    <a class="nav-link " href="/">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                        <a class="nav-link " href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
                     <li class="nav-item fog">
-                    <a class="nav-link " href="#">categories</a>
+                        <a class="nav-link " href="#">categories</a>
                     </li>
                     <li class="nav-item fog">
                         <a class="nav-link " href="#">contacts</a>
                     </li>
                     
+                    @if(!isAuthenticated)
                     <li class="nav-item ">
-                    <a class="nav-link btn btn-outline-primary waves-effect  " href="#">log in</a>
+                        <a class="nav-link btn btn-outline-primary waves-effect  " href="/login">log in</a>
                     </li>
+                    @else
+                    <form action="/logout" method="POST">
+                        <li class="nav-item ">
+                            <button type="submit" value="submit" class="nav-link btn btn-outline-primary waves-effect">Logout</button>
+                        </li>
+                    </form>
+                    @endif
+                    
                     <li class="nav-item cart"> <i class="fas fa-shopping-cart kber"></i></li>
-            
                     <!-- Dropdown -->
                 </ul>
                 <!-- Links -->
@@ -65,7 +73,9 @@
             <!-- Collapsible content -->
             
         </nav>
-            <!--/.Navbar-->
+        <!--/.Navbar-->
+
+
         @!section('main-content')
             
         <!-- footer section  -->

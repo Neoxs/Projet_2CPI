@@ -1,16 +1,10 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
-// const jwt = require('jsonwebtoken')
 
 
 const userSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    lastName: {
+    username: {
         type: String,
         required: true,
         trim: true
@@ -27,14 +21,13 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    phone: {
-        type: Number,
-        required: true,
-        trim: true
-    },
     password: {
         type: String,
         required: true,
+        trim: true
+    },
+    phone: {
+        type: Number,
         trim: true
     },
     cart: {
@@ -53,6 +46,15 @@ const userSchema = new mongoose.Schema({
         ]
     }
 })
+
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.password
+
+    return userObject
+}
 
 userSchema.methods.addToCart = function (product) {
     const cartProductIndex = this.cart.items.findIndex(cp => {
@@ -78,6 +80,22 @@ userSchema.methods.addToCart = function (product) {
     }
     this.cart = updatedCart
     return this.save()
+}
+
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email })
+
+    if (!user) {
+        throw new Error('Unable to login')
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+
+    return user
 }
 
 // Hash the plain text password before saving
