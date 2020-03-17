@@ -9,7 +9,8 @@ const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
 
 //require routes
-const userRoute = require('./routes/user')
+const shopRoute = require('./routes/shop')
+const authRoute = require('./routes/auth')
 
 //Requiring env variables
 require('custom-env').env()
@@ -54,7 +55,8 @@ app.use(
 )
   
 //Registering routes
-app.use(userRoute)
+app.use(shopRoute)
+app.use(authRoute)
   
 //Set up port
 const port = process.env.PORT || 3000

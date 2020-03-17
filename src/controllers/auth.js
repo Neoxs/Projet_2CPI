@@ -51,7 +51,8 @@ exports.postLogin = async (req, res) => {
     try {
        const user = await User.findByCredentials(req.body.email, req.body.password)
        req.session.isAuthenticated = true
-       req.session.user = user.toJSON()
+       req.session.user = user
+       req.session.user.password = ""
        await req.session.save()
        res.redirect('/')
  
