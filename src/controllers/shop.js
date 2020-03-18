@@ -1,5 +1,7 @@
 const Product = require('../models/product')
 const User = require('../models/user')
+const Order = require('../models/order')
+const mongoose = require('mongoose')
 
 
 exports.getHome = async (req, res) => {
@@ -61,4 +63,38 @@ exports.getCart = async(req,res) => {
    //       res.send(products)
    //    })
    //    .catch(err => res.send(err.message))   
+}
+
+exports.postOrder = async (req, res) => {
+   let user = new User(req.session.user)
+   try {
+      user = await user.populate('cart.items.productId').execPopulate()
+      const products = user.cart.items.map(i => {
+         return { quantity: i.quantity, product: { ...i.productId._doc } }
+      })
+      //console.log(user)
+      const order = new Order({
+         user: {
+            name: req.session.user.username,
+            userId: req.session.user._id
+         },
+         products: products
+      })
+      await order.save()
+      req.session.user.cart.items = []
+      await req.session.save()
+      res.send(order)
+   }catch(err){
+      console.log(err.message)
+      res.status(400).send(err.message)
+   }
+}
+
+exports.getOrders = async (req, res) => {
+   try {
+      const orders = Order.find({ 'user.userId': mongoose.Types.ObjectId(req.session.user._id) })
+      res.send(orders)
+   } catch(err){
+      res.status(400).send(err.message)
+   }
 }

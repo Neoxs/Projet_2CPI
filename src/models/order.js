@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const orderSchema = new orderSchema({
+const orderSchema = new mongoose.Schema({
     products: [
         {
             product: { type: Object, required: true },
-            quality: { type: Number, required: true }
+            quantity: { type: Number, required: true }
         }
     ],
     user: {
@@ -20,4 +20,4 @@ const orderSchema = new orderSchema({
     }
 })
 
-module.exports = mongoode.model('Order', orderSchema)
+module.exports = mongoose.model('Order', orderSchema)
