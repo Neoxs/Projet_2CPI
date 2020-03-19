@@ -2,6 +2,7 @@ const Product = require('../models/product')
 const User = require('../models/user')
 const Order = require('../models/order')
 const mongoose = require('mongoose')
+const uniqid = require('uniqid')
 
 
 exports.getHome = async (req, res) => {
@@ -54,15 +55,6 @@ exports.getCart = async(req,res) => {
       console.log(err.message)
       res.status(400).send(err.message)
    }
-   // user
-   //    .populate('cart.items.productId')
-   //    .execPopulate()
-   //    .then(user => {
-   //       const products = user.cart.items
-   //       console.log(user)
-   //       res.send(products)
-   //    })
-   //    .catch(err => res.send(err.message))   
 }
 
 exports.postOrder = async (req, res) => {
@@ -78,7 +70,8 @@ exports.postOrder = async (req, res) => {
             name: req.session.user.username,
             userId: req.session.user._id
          },
-         products: products
+         products: products,
+         orderId: uniqid('Agora-')
       })
       await order.save()
       req.session.user.cart.items = []
@@ -92,7 +85,7 @@ exports.postOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
    try {
-      const orders = Order.find({ 'user.userId': mongoose.Types.ObjectId(req.session.user._id) })
+      const orders = Order.findOne({ 'user.userId': req.user._id })
       res.send(orders)
    } catch(err){
       res.status(400).send(err.message)

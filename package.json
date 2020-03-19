@@ -21,6 +21,7 @@
     "express-session": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.3",
+    "uniqid": "^5.2.0",
     "validator": "^12.2.0"
   },
   "devDependencies": {

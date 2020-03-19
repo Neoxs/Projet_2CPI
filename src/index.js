@@ -4,6 +4,7 @@ const path = require('path')
 const edge = require('express-edge')
 const bodyParser = require("body-parser")
 const session = require('express-session')
+const User = require('./models/user')
 
 
 const MongoDBStore = require('connect-mongodb-session')(session)
@@ -53,6 +54,7 @@ app.use(
     store: store // u will find store variable on config/mongoose
   })
 )
+
   
 //Registering routes
 app.use(shopRoute)
