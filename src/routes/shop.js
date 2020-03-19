@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 
+const isAuth = require('../middlewares/isAuth')
+
 const shopController = require('../controllers/shop')
 
 //getting welcome "home" page and rendering the latest products on it
@@ -10,13 +12,13 @@ router.get('/', shopController.getHome)
 router.get('/product/:productId', shopController.getProduct)
 
 //adding to product to cart
-router.post('/cart', shopController.postCart)
+router.post('/cart', isAuth, shopController.postCart)
 
 //Loading the cart
-router.get('/cart', shopController.getCart)
+router.get('/cart', isAuth, shopController.getCart)
 
-router.post('/create-order', shopController.postOrder)
+router.post('/create-order', isAuth, shopController.postOrder)
 
-router.get('/orders', shopController.getOrders)
+router.get('/orders', isAuth, shopController.getOrders)
 
 module.exports = router
