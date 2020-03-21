@@ -85,9 +85,27 @@ exports.postOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
    try {
-      const orders = Order.findOne({ 'user.userId': req.user._id })
+      const orders = await Order.find({ "user.userId": req.session.user._id.toString() })
       res.send(orders)
    } catch(err){
+      res.status(400).send(err.message)
+   }
+}
+
+exports.postSearch = async (req, res) => {
+   try {
+      //const { category, minPrice, maxPrice } = req.body
+      const category = req.body.category || ""
+      const minPrice = req.body.minPrice || 0
+      const maxPrice = req.body.maxPrice || 1000
+
+      const results = await Product.find({
+         category: category,
+         price: { $gt: minPrice, $lt: maxPrice }
+      })
+      res.send(results)
+   }catch(err){
+      console.log(err.message)
       res.status(400).send(err.message)
    }
 }

@@ -17,8 +17,13 @@ router.post('/cart', isAuth, shopController.postCart)
 //Loading the cart
 router.get('/cart', isAuth, shopController.getCart)
 
+//Creating an order
 router.post('/create-order', isAuth, shopController.postOrder)
 
+//Fetchig the orders
 router.get('/orders', isAuth, shopController.getOrders)
+
+//searching for products
+router.post('/products', shopController.postSearch)
 
 module.exports = router
