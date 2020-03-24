@@ -1,0 +1,136 @@
+<div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+
+    <!--Controls-->
+    <div class="controls-top">
+      <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
+          class="fas fa-chevron-left"></i></a>
+      <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
+          class="fas fa-chevron-right"></i></a>
+    </div>
+    <!--/.Controls-->
+  
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+      <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+      <li data-target="#carousel-example-multi" data-slide-to="3"></li>
+      <li data-target="#carousel-example-multi" data-slide-to="4"></li>
+      <li data-target="#carousel-example-multi" data-slide-to="5"></li>
+    </ol>
+    <!--/.Indicators-->
+  
+    <div class="carousel-inner v-2" role="listbox">
+  
+      <div class="carousel-item active">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (29).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (30).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="col-12 col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (27).jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title font-weight-bold">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary btn-md btn-rounded">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  <script>
+      $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+
+  for (var i=0;i<4;i++) {
+    next=next.next();
+    if (!next.length) {
+      next=$(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+  }
+});
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://c special-coloruery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  
