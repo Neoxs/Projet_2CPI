@@ -57,17 +57,19 @@ userSchema.methods.toJSON = function () {
 }
 
 userSchema.methods.addToCart = function (product) {
-    const cartProductIndex = this.cart.items.findIndex(cp => {
+    const user = this
+    //console.log(this)
+    const cartProductIndex = user.cart.items.findIndex(cp => {
         return cp.productId.toString() === product._id.toString()
     })
     //console.log(cartProductIndex)
 
     let newQuantity = 1
-    const  updatedCartItems = [...this.cart.items]
+    const  updatedCartItems = [...user.cart.items]
     //console.log(updatedCartItems)
 
     if (cartProductIndex >= 0) {
-        newQuantity = this.cart.items[cartProductIndex].quantity + 1
+        newQuantity = user.cart.items[cartProductIndex].quantity + 1
         updatedCartItems[cartProductIndex].quantity = newQuantity
     }else{
         updatedCartItems.push({
@@ -78,8 +80,8 @@ userSchema.methods.addToCart = function (product) {
     const updatedCart = {
         items: updatedCartItems
     }
-    this.cart = updatedCart
-    return this.save()
+    user.cart = updatedCart
+    return user
 }
 
 userSchema.statics.findByCredentials = async (email, password) => {
