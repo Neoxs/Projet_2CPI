@@ -162,3 +162,41 @@
     border-bottom: 1px solid white;
     cursor: pointer;
 }
+.view > img {
+   display: inline;
+
+}
+
+.zoom {
+    display: inline;
+}
+
+.zoom:hover {
+z-index: 555;
+
+}
+.price_definer {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px){
+.navo-el {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.navside {
+    display: inline;
+    text-align: center;
+}
+.oppo {
+    text-align: center;
+}
+}
+
+@media only screen and (max-width: 850px){
+    .img-fluid {
+        width: 40%;
+    }
+    
+}
