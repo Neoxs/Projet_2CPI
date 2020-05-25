@@ -1,0 +1,69 @@
+
+
+
+/*navbar*/
+
+.caro {
+
+    height : 40% !important;
+    }
+    .byad {
+        color: white;
+        position: absolute;
+        left: 164px;
+        bottom: 14px;
+    }
+    .fog {
+        padding-top: 2.5%;
+    }
+    .soso {
+        position: relative;
+        
+    }
+    .kber {
+    font-size: 25px;
+    color: #4285f4;
+    }
+    .cart {
+        padding-top: 5%;
+        padding-left: 0%;
+        padding-right: 10px;
+    }
+    
+    
+    /*navbar*/
+    
+
+
+
+.feet{
+    
+    background-color: #37474f;
+}
+
+
+
+@media only screen and (max-width: 768px){
+    
+    .lili {
+        display: inline;
+    }
+    .lolo {
+        display: inline-block;
+        padding-right: 20px;
+        
+    }
+    
+}
+@media only screen and (max-width: 990px){
+    .cart{
+        position: absolute;
+        left: 40%;
+        bottom: 2%;
+        
+    }
+    
+}
+
+
+/* footer */
