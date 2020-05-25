@@ -1,4 +1,8 @@
 // Material Select Initialization
-$(document).ready(function() {
-    $('.mdb-select').materialSelect();
-    });
+document.querySelector('.form-control').addEventListener('focus', function (){
+    document.querySelector('.byad').style.display = 'none';
+});
+
+// $(document).ready(function() {
+//     $('.mdb-select').materialSelect();
+//     });
