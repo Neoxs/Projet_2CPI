@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="../../public/vendors/mdb/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="products.css" >
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark special-color" style="position: fixed;;width: 100%;z-index: 16;">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Navbar</a>
+    
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+          <!-- Links -->
+          <ul class="navbar-nav ml-auto ">
+            <li class="nav-item active fog">
+              <a class="nav-link " href="home.html">Home
+                <!-- <span class="sr-only">(current)</span> -->
+              </a>
+            </li>
+            <li class="nav-item fog">
+              <a class="nav-link " href="#">products</a>
+            </li>
+            <li class="nav-item fog">
+                <a class="nav-link " href="#cnt">contacts</a>
+              </li>
+              
+            <li class="nav-item ">
+              <a class="nav-link btn btn-outline-primary waves-effect  " href="login.html">log in</a>
+            </li>
+            <li class="nav-item cart"> <button data-toggle="modal" data-target="#modalCart2" style="background: none;border: none;"> <i class="fas fa-shopping-cart kber"></i></li> </button>
+      
+            <!-- Dropdown -->
+                  </ul>
+          <!-- Links -->
+      
+          <form class="form-inline soso">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <i class="fas fa-search byad"></i>
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+      
+      </nav>
+      <!--/.Navbar-->
+      <div style="height: 80px;"></div>
+      <div> 
+        <div class="container-fluid" style="margin-bottom: 15px;" >
+          <div class="row">
+            <div class="col-lg-3 col-md-3 oppo" style="background-color:#37474f; ">
+                <div class="container-fluid oppo">
+                  <ul style="list-style: none; padding-top: 15%; padding-left: 0;" class="navside">
+                    <li class="navo-el"> 
+                      ELEMENT ON
+                    </li>
+                    <li class="navo-el">
+                      ELEMENT ON
+                    </li>
+                    <li class="navo-el">
+                      ELEMENT ON
+                    </li>
+                    <li class="navo-el">
+                      ELEMENT ON
+                    </li>
+                   
+                  </ul>
+                </div>
+             
+            </div>
+            <div class="col-lg-9 col-md-9" style="background-color: #f1f1f1;" >
+            <!-- <form class="range-field my-4 w-25">
+              <input type="range" min="0" max="100" />
+            </form> -->
+            <div class="continer">
+              <div class="row">
+                <div class="col-lg-6" style="text-align: center;">
+                  <h3 style="color: #495057;" >   what's your product</h3>
+                <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+                  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                    aria-label="Search">
+                  <i class="fas fa-search" aria-hidden="true" style="color: #4285f4;"></i>
+                </form>
+              </div>
+                <div class="col-lg-3 col-md- col-sm-6 col-xs-6 price_definer">
+            <h3 style="color: #495057">min price</h2>
+            <div class="def-number-input number-input safari_only" style="display: inline-block;">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+              <input class="quantity" min="0" name="quantity" value="1" type="number">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+                 </div>
+
+                 <div class="col-lg-3 col-md- col-sm-6 col-xs-6 price_definer">
+            <h3 style="color: #495057">max price</h2>
+            <div class="def-number-input number-input safari_only "style="display: inline-block;" >
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+              <input class="quantity" min="0" name="quantity" value="1" type="number">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+          </div>
+         
+          </div>
+          <div class="row" style="text-align: center;">
+            <div data-spy="scroll" class="scrollspy-example z-depth-1 mt-4" style="height : 380px;" style="text-align: center;">
+              <div class="container-fluid">
+                <div class="row" style="text-align: center;">
+                  <div style="display: inline-block;">
+                <!-- <div class="col-lg-12"> -->
+                    
+                    <div class="view overlay zoom" data-toggle="modal" data-target="#modalQuickView">
+                      <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom"  > 
+                      <div class="mask flex-center waves-effect waves-light">
+                       <p class="white-text">check product</p>
+                                            </div>
+                                          </div>
+                                        
+
+                                      <div class="view overlay zoom">
+                        <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+                        <div class="mask flex-center waves-effect waves-light">
+                          <p class="white-text">check product</p>
+                        </div>
+                      </div>
+                                      <div class="view overlay zoom">
+                        <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+                        <div class="mask flex-center waves-effect waves-light">
+                          <p class="white-text">check product</p>
+                        </div>
+                      <!-- </div> -->
+                                    </div>
+                                  
+                                    <!-- <div class="col-lg-12"> -->
+                                      <div class="view overlay zoom">
+                        <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+                        <div class="mask flex-center waves-effect waves-light">
+                          <p class="white-text">check product</p>
+                        </div>
+                      </div>
+                                      <div class="view overlay zoom">
+                        <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+                        <div class="mask flex-center waves-effect waves-light">
+                          <p class="white-text">check product</p>
+                        </div>
+                      </div>
+                <div class="view overlay zoom">
+  <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+  <div class="mask flex-center waves-effect waves-light">
+    <p class="white-text">check product</p>
+  </div>
+</div>
+              <!-- </div> -->
+              
+              <!-- <div class="col-lg-12"> -->
+                <div class="view overlay zoom">
+  <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+  <div class="mask flex-center waves-effect waves-light">
+    <p class="white-text">check product</p>
+  </div>
+</div>
+                <div class="view overlay zoom">
+  <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+  <div class="mask flex-center waves-effect waves-light">
+    <p class="white-text">check product</p>
+  </div>
+</div>
+                <div class="view overlay zoom">
+  <img src="../../public/img/pic3.png" class="img-fluid " alt="zoom">
+  <div class="mask flex-center waves-effect waves-light">
+    <p class="white-text">check product</p>
+  </div>
+</div>
+              <!-- </div> -->
+
+            </div>
+          </div>
+            </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+
+          </div>  
+          </div>
+        </div>
+      </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small feet pt-4">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+        
+        <!-- Grid row -->
+        <div class="row">
+        
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+        
+          <!-- Content -->
+          <h5 class="font-weight-bold text-uppercase mb-4">Footer content</h5>
+          <p>uu can get in the section these informations :</p>
+          <p>informations about our shop<br>
+            our Social media acounts <br>
+              our localisation <br>
+              our contacts</p>
+        
+        </div>
+        <!-- Grid column -->
+        
+        <hr class="clearfix w-100 d-md-none">
+        
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+        
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+        
+          <ul class="list-unstyled lili">
+            <li class="lolo">
+              <p class="poop">
+                <a href="#!">WORK TIMES</a>
+              </p>
+            </li>
+            <li class="lolo">
+              <p>
+                <a href="#!">ABOUT US</a>
+              </p>
+            </li>
+            <li class="lolo">
+              <p>
+                <a href="#!">BLOG</a>
+              </p>
+            </li>
+            <li class="lolo">
+              <p>
+                <a href="#!">CERTIFICATIONS</a>
+              </p>
+            </li>
+          </ul>
+        
+        </div>
+        <!-- Grid column -->
+        
+        <hr class="clearfix w-100 d-md-none">
+        
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+        
+          <!-- Contact details -->
+          <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+        
+          <ul class="list-unstyled">
+            <li>
+              <p>
+                <i class="fas fa-home mr-3"></i> sidi belabbes</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </li>
+          </ul>
+        
+        </div>
+        <!-- Grid column -->
+        
+        <hr class="clearfix w-100 d-md-none">
+        
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+        
+          <!-- Social buttons -->
+          <h5 class="font-weight-bold text-uppercase mb-4" id="cnt">Follow Us</h5>
+        
+          <!-- Facebook -->
+          <a type="button" class="btn-floating btn-fb">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <!-- Twitter -->
+          <a type="button" class="btn-floating btn-tw">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <!-- Google +-->
+          <a type="button" class="btn-floating btn-gplus">
+            <i class="fab fa-google-plus-g"></i>
+          </a>
+          <!-- Dribbble -->
+          <a type="button" class="btn-floating btn-dribbble">
+            <i class="fab fa-instagram"></i>
+          </a>
+        
+        </div>
+        <!-- Grid column -->
+        
+        </div>
+        <!-- Grid row -->
+        
+        </div>
+        <!-- Footer Links -->
+        
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="Agora.com/"> Agora.com</a>
+        </div>
+        <!-- Copyright -->
+        
+        </footer>
+        
+        <!-- footer -->
+        
+        
+        <!-- Modal: modalQuickView -->
+      
+
+
+        <div class="modal fade" id="modalCart2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Your cart</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+      
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Product 1</td>
+                    <td>100$</td>
+                    <td><a><i class="fas fa-times"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Product 2</td>
+                    <td>100$</td>
+                    <td><a><i class="fas fa-times"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Product 3</td>
+                    <td>100$</td>
+                    <td><a><i class="fas fa-times"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Product 4</td>
+                    <td>100$</td>
+                    <td><a><i class="fas fa-times"></i></a></td>
+                  </tr>
+                  <tr class="total">
+                    <th scope="row">5</th>
+                    <td>Total</td>
+                    <td><a><i class="fas fa-times"></i></a></td>
+                    <td>400$</td>
+                  </tr>
+                </tbody>
+              </table>
+      
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+              <a href="check.html"><button class="btn btn-primary" >Checkout</button> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-5">
+                <!--Carousel Wrapper-->
+                <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails"
+                  data-ride="carousel">
+                  <!--Slides-->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                      <img class="d-block w-100"
+                        src="../../public/img/pic3.png"
+                        alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100"
+                        src="../../public/img/pic3.png"
+                        alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100"
+                        src="../../public/img/pic3.png"
+                        alt="Third slide">
+                    </div>
+                  </div>
+                  <!--/.Slides-->
+                  <!--Controls-->
+                  <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                  <!--/.Controls-->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-thumb" data-slide-to="0" class="active">
+                      <img src="../../public/img/pic3.png" width="60">
+                    </li>
+                    <li data-target="#carousel-thumb" data-slide-to="1">
+                      <img src="../../public/img/pic3.png" width="60">
+                    </li>
+                    <li data-target="#carousel-thumb" data-slide-to="2">
+                      <img src="../../public/img/pic3.png" width="60">
+                    </li>
+                  </ol>
+                </div>
+                <!--/.Carousel Wrapper-->
+              </div>
+              <div class="col-lg-7">
+                <h2 class="h2-responsive product-name">
+                  <strong>Product Name</strong>
+                </h2>
+                <h4 class="h4-responsive">
+                  <span class="green-text">
+                    <strong>$49</strong>
+                  </span>
+                  <span class="grey-text">
+                    <small>
+                      <s>$89</s>
+                    </small>
+                  </span>
+                </h4>
+    
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+    
+                  <!-- Accordion card -->
+                  <div class="card">
+    
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingOne1">
+                      <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                        aria-controls="collapseOne1">
+                        <h5 class="mb-0">
+                          product description <i class="fas fa-angle-down rotate-icon"></i>
+                        </h5>
+                      </a>
+                    </div>
+    
+                    <!-- Card body -->
+                    <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                      data-parent="#accordionEx">
+                      <div class="card-body">
+                        this is a despription of that product
+                      </div>
+                    </div>
+    
+                  </div>
+                  <!-- Accordion card -->
+    
+                  <!-- Accordion card -->
+                  <div class="card">
+    
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo2">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                        aria-expanded="false" aria-controls="collapseTwo2">
+                        <h5 class="mb-0">
+                         product ingrediants <i class="fas fa-angle-down rotate-icon"></i>
+                        </h5>
+                      </a>
+                    </div>
+    
+                    <!-- Card body -->
+                    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                      data-parent="#accordionEx">
+                      <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                        squid. 3
+                        wolf moon officia aute,
+                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                      </div>
+                    </div>
+    
+                  </div>
+                  <!-- Accordion card -->
+    
+                  <!-- Accordion card -->
+                  <div class="card">
+    
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingThree3">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                        aria-expanded="false" aria-controls="collapseThree3">
+                        <h5 class="mb-0">
+                          product facts <i class="fas fa-angle-down rotate-icon"></i>
+                        </h5>
+                      </a>
+                    </div>
+    
+                    <!-- Card body -->
+                    <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                      data-parent="#accordionEx">
+                      <div class="card-body">
+                        idk 
+                      </div>
+                    </div>
+    
+                  </div>
+                  <!-- Accordion card -->
+    
+                </div>
+                <!-- Accordion wrapper -->
+    
+    
+                <!-- Add to Cart -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <label>Select quantity</label>
+                      <div class="def-number-input number-input safari_only" style="display: inline-block;">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                      
+    
+                    </div>
+                                <div class="text-center">
+    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Add to cart
+                      <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.Add to Cart -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      <script src="https://c special-coloruery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      
+      <script src="../../public/vendors/mdb/js/mdb.min.js"></script>
+      <script src="../../public/js/products.js"></script>
+</body>
