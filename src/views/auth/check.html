@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     
@@ -32,7 +33,7 @@
               </a>
             </li>
             <li class="nav-item fog">
-              <a class="nav-link " href="#">products</a>
+              <a class="nav-link " href="products.html">products</a>
             </li>
             <li class="nav-item fog">
                 <a class="nav-link " href="#cnt">contacts</a>
@@ -135,6 +136,21 @@
     </div>
     <!--Footer-->
     <div class="modal-footer">
+      <div style="position: absolute; left: 2%; display: inline;"> 
+       <!-- Default checked -->
+          <div class="custom-control custom-checkbox" style="display: inline-block;" >
+            <input type="checkbox" class="custom-control-input" id="defaultChecked2"  onclick="myFunction()">
+            <label class="custom-control-label" for="defaultChecked2">delivery </label>
+          </div>
+           <!-- Material input -->
+           <div style="display: inline-block;">
+            <div class="md-form form-lg"  style="display: none; margin-left: 20px;" id="text">
+              <input type="text" id="inputLGEx" class="form-control form-control-lg active">
+              <label for="inputLGEx"></label>
+            </div>
+        </div>
+        
+      </div> 
       <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
       <button class="btn btn-primary">Confirm</button>
     </div>
@@ -145,7 +161,7 @@
 
 
 
-
+ <!-- <div class="md-form form-lg" > -->
 
 
 
@@ -154,7 +170,7 @@
 
 
 <!-- Footer -->
-<footer class="page-footer font-small feet pt-4" ">
+<footer class="page-footer font-small feet pt-4" >
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
@@ -297,5 +313,18 @@
     document.querySelector('.form-control').addEventListener('focus', function (){
     document.querySelector('.byad').style.display = 'none';
 });
+function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("defaultChecked2");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
 </script>
 </body>
