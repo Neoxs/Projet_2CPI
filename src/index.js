@@ -6,12 +6,13 @@ const bodyParser = require("body-parser")
 const session = require('express-session')
 const User = require('./models/user')
 
-
 const MongoDBStore = require('connect-mongodb-session')(session)
 
 //require routes
 const shopRoute = require('./routes/shop')
 const authRoute = require('./routes/auth')
+const adminRoute = require('./routes/admin')
+
 
 //Requiring env variables
 require('custom-env').env()
@@ -59,6 +60,8 @@ app.use(
 //Registering routes
 app.use(shopRoute)
 app.use(authRoute)
+app.use(adminRoute);
+
   
 //Set up port
 const port = process.env.PORT || 3000
