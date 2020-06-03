@@ -29,6 +29,20 @@ exports.getProduct = async (req, res) => {
     }
 }
 
+exports.getProductPage = async (req, res) => {
+   try {
+      //const products = await Product.find({})
+      res.render('shop.products', {
+         path: '/products',
+         pageTitle: 'Products',
+         isAuthenticated: req.session.isAuthenticated
+      })
+
+   }catch(e) {
+      res.send(e.message)
+   }
+}
+
 exports.postCart = async(req,res) => {
    const prodId = req.body.productId
    try {

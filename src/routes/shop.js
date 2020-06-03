@@ -24,6 +24,9 @@ router.post('/create-order', isAuth, shopController.postOrder)
 router.get('/orders', isAuth, shopController.getOrders)
 
 //searching for products
+router.get('/products', shopController.getProductPage)
+
+//searching for products
 router.post('/products', shopController.postSearch)
 
 module.exports = router
