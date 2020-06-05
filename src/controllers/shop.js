@@ -1,6 +1,7 @@
 const Product = require('../models/product')
 const User = require('../models/user')
 const Order = require('../models/order')
+const Category = require('../models/category')
 const mongoose = require('mongoose')
 const uniqid = require('uniqid')
 
