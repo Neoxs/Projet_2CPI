@@ -35,14 +35,16 @@
                     
                         <form action="/products" method="get" class="row">
 
-                            <div class="col-lg-6" style="text-align: center;">
+                                <div class="col-lg-6" style="text-align: center;">
                                     <h3 style="color: #495057;">what's your product</h3>
-                                    <div class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+                                    <div class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" style="display: inline-block">
                                         <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search" />
-                                        <i class="fas fa-search" aria-hidden="true" style="color: #4285f4;"></i>
+                    
+                                         <i type="submit" class="fas fa-search" aria-hidden="true" style="color: #4285f4;"></i>
                                     </div>
+                                    
                                 </div>
-                                <div class="col-lg-2 col-md- col-sm-6 col-xs-6 price_definer">
+                                <div class="col-lg-2 col-md col-sm-6 col-xs-6 price_definer">
                                     <h3 style="color: #495057;">min price</h3>
                                     <div class="def-number-input number-input safari_only" style="display: inline-block;">
                                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(50)" class="minus"></button>
@@ -51,7 +53,7 @@
                                     </div>
                                 </div>
                     
-                                <div class="col-lg-2 col-md- col-sm-6 col-xs-6 price_definer">
+                                <div class="col-lg-2 col-md col-sm-6 col-xs-6 price_definer">
                                     <h3 style="color: #495057;">max price</h3>
                                     <div class="def-number-input number-input safari_only" style="display: inline-block;">
                                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(50)" class="minus"></button>
@@ -59,7 +61,10 @@
                                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(50)" class="plus"></button>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary col-lg-2" type="submit">Search</button>
+                                <div class="col-lg-2 col-md" style="text-align: center; position:relative">
+                                    <button class="btn btn-primary" style="position: relative; top: 24%" type="submit">Search</button>
+                                </div>
+                                
                         </form>
                         
                     
@@ -67,12 +72,12 @@
                         <div data-spy="scroll" class="scrollspy-example z-depth-1 mt-4" style="height: 380px;" style="text-align: center;">
                             <div class="container-fluid">
                                 <div class="row" style="text-align: center;">
-                                    <div style="display: inline-block;">
+                                    
                                         <!-- <div class="col-lg-12"> -->
                                         @each(product in products)
-                                            <a href={{'/product/' + product._doc._id}}>
+                                            <a class="col-lg-4 col-xl-4 col-md-6 col-sm-6" href={{'/product/' + product._doc._id}}>
                                                 <div class="view overlay zoom">
-                                                    <img src={{product._doc.imageURL}} class="img-fluid" alt="zoom" />
+                                                    <img src={{product._doc.imageURL}} class="img-fluid" style="height: 160px; width: 98%; object-fit: cover; margin: 2%;" alt="zoom" />
                                                     <div class="mask flex-center waves-effect waves-light">
                                                         <p class="white-text">check product</p>
                                                     </div>
@@ -82,7 +87,7 @@
                                         @endeach
             
                                         <!-- </div> -->
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

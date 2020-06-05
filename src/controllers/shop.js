@@ -23,7 +23,12 @@ exports.getProduct = async (req, res) => {
     try {
        const prodId = req.params.productId
        const product = await Product.findById(prodId)
-       res.send(product)
+       res.render('shop.productDetails', {
+         path: '/products',
+         pageTitle: 'Product Details',
+         product,
+         isAuthenticated: req.session.isAuthenticated
+      })
     }catch(e) {
        res.status(400).send(e.message)
     }
