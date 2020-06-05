@@ -29,12 +29,27 @@ exports.getProduct = async (req, res) => {
     }
 }
 
-exports.getProductPage = async (req, res) => {
+exports.getSearch = async (req, res) => {
    try {
+      // Extracting query data
+      const { query, min ,max } = req.query
+
+      // Fetching search results
+
+      const category = query || /.*/
+      const minPrice = min || 0
+      const maxPrice = max || 1000
+
+      const results = await Product.find({
+         category: { $regex: category, $options: 'i' },
+         price: { $gt: minPrice, $lt: maxPrice }
+      })
+      
       //const products = await Product.find({})
       res.render('shop.products', {
          path: '/products',
          pageTitle: 'Products',
+         products: results,
          isAuthenticated: req.session.isAuthenticated
       })
 
