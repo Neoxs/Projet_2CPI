@@ -66,13 +66,16 @@ exports.getSearch = async (req, res) => {
 
 exports.postCart = async(req,res) => {
    const prodId = req.body.productId
+   const quantity = parseInt(req.body.quantity)
+   //console.log(prodId)
    try {
       const product = await Product.findById(prodId)
       const user = new User(req.session.user)
-      console.log(user)
-      req.session.user = user.addToCart(product)
+      //console.log(user)
+      //console.log(quantity)
+      req.session.user = user.addToCart(product, quantity)
       await req.session.save()
-      res.send(req.session.user)
+      res.redirect('/cart')
    }catch(e){
       console.log(e.message)
       res.status(400).send(e.message)
@@ -83,9 +86,18 @@ exports.getCart = async(req,res) => {
    let user = new User(req.session.user)
    try {
       user = await user.populate('cart.items.productId').execPopulate()
-      const products = user.cart.items
-      console.log(user)
-      res.send(products)
+      const items = user.cart.items
+      //console.log(items[0])
+      const prices = items.map(item => item.productId._doc.price * item.quantity)
+      //console.log(prices)
+      const total = prices.reduce((accumulator, currentValue) => accumulator + currentValue) 
+      res.render('shop.checkout', {
+         path: '/cart',
+         pageTitle: 'Cart',
+         items,
+         total,
+         isAuthenticated: req.session.isAuthenticated
+      })
    }catch(err){
       console.log(err.message)
       res.status(400).send(err.message)

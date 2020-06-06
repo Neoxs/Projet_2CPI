@@ -42,6 +42,7 @@ color: #4285f4;
         bottom: 2%;
         
     }
+    }
     
 /*navbar*/
 </style>
@@ -54,8 +55,7 @@ color: #4285f4;
     <a class="navbar-brand" href="#">Navbar</a>
 
     <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
@@ -79,9 +79,12 @@ color: #4285f4;
         <li class="nav-item ">
             
             <div class="dropdown">
-  <a class="btn btn-primary btn-outline-primary waves-effect " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="far fa-user pr-2" aria-hidden="true"></i>User
+  
+
+  <a type="button" role="button" class="btn-floating btn-sm btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
   </a>
+  
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="#">subscribe for newsletter</a>
@@ -91,8 +94,9 @@ color: #4285f4;
 </div>
         </li>
         <li class="nav-item cart">
-             <button data-toggle="modal" data-target="#modalCart" style="background: none;border: none;"> <i class="fas fa-shopping-cart kber"></i></li> 
+             <button data-toggle="modal" data-target="#modalCart" style="background: none;border: none;"> <i class="fas fa-shopping-cart kber"></i> <span class="counter counter-floating counter-sm"></span></li> 
             </button>
+            
   
         <!-- Dropdown -->
               </ul>

@@ -56,7 +56,7 @@ userSchema.methods.toJSON = function () {
     return userObject
 }
 
-userSchema.methods.addToCart = function (product) {
+userSchema.methods.addToCart = function (product, quantity) {
     const user = this
     //console.log(this)
     const cartProductIndex = user.cart.items.findIndex(cp => {
@@ -64,12 +64,12 @@ userSchema.methods.addToCart = function (product) {
     })
     //console.log(cartProductIndex)
 
-    let newQuantity = 1
+    let newQuantity = quantity
     const  updatedCartItems = [...user.cart.items]
     //console.log(updatedCartItems)
 
     if (cartProductIndex >= 0) {
-        newQuantity = user.cart.items[cartProductIndex].quantity + 1
+        newQuantity += user.cart.items[cartProductIndex].quantity
         updatedCartItems[cartProductIndex].quantity = newQuantity
     }else{
         updatedCartItems.push({

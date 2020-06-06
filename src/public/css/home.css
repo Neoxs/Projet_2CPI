@@ -76,6 +76,15 @@
         padding-left: 0%;
         padding-right: 10px;
     }
+
+    @media only screen and (max-width: 990px){
+        .cart{
+            position: absolute;
+            left: 40%;
+            bottom: 2%;
+            
+        }
+    }
     
     
     /*navbar*/

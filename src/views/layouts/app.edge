@@ -51,11 +51,21 @@
                         <a class="nav-link btn btn-outline-primary waves-effect  " href="/login">log in</a>
                     </li>
                     @else
-                    <form action="/logout" method="POST">
-                        <li class="nav-item ">
-                            <button type="submit" value="submit" class="nav-link btn btn-outline-primary waves-effect">Logout</button>
-                        </li>
-                    </form>
+                   
+                        <div class="dropdown">
+                            <a type="button" role="button" class="btn-floating btn-sm btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-user"></i>
+                            </a>   
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">My profile</a>
+                                <a class="dropdown-item" href="#">My orders</a>
+                                <form action="/logout" method="POST" style="width: 165px">
+                                    <button class="dropdown-item" type="submit">Logout</button>
+                                </form>
+                            </div>
+                          </div>
+                    
                     @endif
                     
                     <li class="nav-item cart"> <i class="fas fa-shopping-cart kber"></i></li>

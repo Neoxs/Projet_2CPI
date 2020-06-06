@@ -1,0 +1,90 @@
+@layout('layouts.app')
+@section('main-content')  
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>PRODUCT</th>
+                <th>quantity</th>
+                <th>unit Price</th>
+                <th>price</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(item in items)
+                <tr style="vertical-align: middle;">
+                    <th scope="row" style="vertical-align: middle;">
+                        <div class="pro" style="display: inline;">
+                            <img src={{item.productId._doc.imageURL}} style="width: 100px; overflow: hidden; display: inline-block;" />
+                            <p style="display: inline;">{{item.productId.title}}</p>
+                        </div>
+                    </th>
+                    <td style="vertical-align: middle;">{{item.quantity}}</td>
+                    <td style="vertical-align: middle;">{{item.productId.price}}</td>
+                    <td id="price" style="vertical-align: middle;">{{item.productId.price * item.quantity}}</td>
+                    <td style="vertical-align: middle;">
+                        <a><i class="fas fa-times"></i></a>
+                    </td>
+                </tr>
+                
+            @endeach
+            <tr class="total">
+                <th scope="row"></th>
+                <td></td>
+                <td><h4>total price</h4></td>
+                <td>
+                    <h4 class="h4-responsive">
+                        <span class="green-text">
+                            <strong id="totalPrice">{{ total }} DZD</strong>
+                        </span>
+                    </h4>
+                </td>
+                <td></td>
+            </tr>
+            
+        </tbody>
+            
+    </table>
+    <div class="modal-footer">
+            <div style="position: absolute; left: 2%; display: inline;">
+                <!-- Default checked -->
+                <div class="custom-control custom-checkbox" style="display: inline-block;">
+                    <input type="checkbox" class="custom-control-input" id="defaultChecked2" onclick="myFunction()" />
+                    <label class="custom-control-label" for="defaultChecked2">delivery </label>
+                </div>
+                <!-- Material input -->
+                <div style="display: inline-block;">
+                    <div class="md-form form-lg" style="display: none; margin-left: 20px;" id="text">
+                        <input type="text" id="inputLGEx" class="form-control form-control-lg active" />
+                        <label for="inputLGEx"></label>
+                    </div>
+                </div>
+            </div>
+            <a href="/products" type="button" class="btn btn-outline-primary" data-dismiss="modal">Return Shopping</a>
+            <button class="btn btn-primary">Buy</button>
+        </div>
+        <script>
+                document.querySelector('.form-control').addEventListener('focus', function (){
+                document.querySelector('.byad').style.display = 'none';});
+                
+                const prices = document.querySelector('#price')
+                let total = 0
+                prices.forEach(price => {
+                    total += price.value
+                })
+                document.getElementById('totalPrice').innerHTML = total
+                function myFunction() {
+                    // Get the checkbox
+                    var checkBox = document.getElementById("defaultChecked2");
+                    // Get the output text
+                    var text = document.getElementById("text");
+                    
+                    // If the checkbox is checked, display the output text
+                    if (checkBox.checked == true){
+                        text.style.display = "block";
+                    } else {
+                        text.style.display = "none";
+                    }
+                }
+            </script>
+@endsection

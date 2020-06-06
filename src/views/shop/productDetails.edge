@@ -53,7 +53,7 @@
                                 </h2>
                                 <h4 class="h4-responsive">
                                     <span class="green-text">
-                                        <strong>$49</strong>
+                                        <strong>{{product._doc.price}} DZD</strong>
                                     </span>
                                     <span class="grey-text">
                                         <small>
@@ -76,7 +76,7 @@
                                         <!-- Card body -->
                                         <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                                             <div class="card-body">
-                                                this is a despription of that product
+                                                {{product._doc.description}}
                                             </div>
                                         </div>
                                     </div>
@@ -101,44 +101,31 @@
                                     </div>
                                     <!-- Accordion card -->
 
-                                    <!-- Accordion card -->
-                                    <div class="card">
-                                        <!-- Card header -->
-                                        <div class="card-header" role="tab" id="headingThree3">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-                                                <h5 class="mb-0">product facts <i class="fas fa-angle-down rotate-icon"></i></h5>
-                                            </a>
-                                        </div>
-
-                                        <!-- Card body -->
-                                        <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
-                                            <div class="card-body">
-                                                idk
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Accordion card -->
                                 </div>
                                 <!-- Accordion wrapper -->
 
                                 <!-- Add to Cart -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Select quantity</label>
-                                            <div class="def-number-input number-input safari_only" style="margin-bottom: 15px;">
-                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                                <input class="quantity" min="0" name="quantity" value="1" type="number" />
-                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <form id="addToCart" action="/cart" method="post" onsubmit="e.preventDefault()">
+                                            <input type="text" name="productId" value={{ product._doc._id }} hidden>
+                                            <div class="col-md-6">
+                                                <label>Select quantity</label>
+                                                <div class="def-number-input number-input safari_only" style="margin-bottom: 15px;">
+                                                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                                                    <input class="quantity" min="1" name="quantity" value="1" type="number" />
+                                                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button class="btn btn-primary">
-                                                Add to cart
-                                                <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
+                                            <div class="text-center">
+                                                <a type="button" href="/products" class="btn btn-secondary" data-dismiss="modal">Return shopping</a>
+                                                
+                                                <button type="submit;return false" onclick="e.preventDefault();" class="btn btn-primary">
+                                                    Add to cart
+                                                    <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </form>                                     
                                     </div>
                                     <!-- /.Add to Cart -->
                                 </div>
