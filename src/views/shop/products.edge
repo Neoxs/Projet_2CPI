@@ -9,18 +9,11 @@
             <div class="col-lg-3 col-md-3 oppo" style="background-color: #37474f;">
                 <div class="container-fluid oppo">
                     <ul style="list-style: none; padding-top: 15%; padding-left: 0;" class="navside">
-                        <li class="navo-el">
-                            ELEMENT ON
-                        </li>
-                        <li class="navo-el">
-                            ELEMENT ON
-                        </li>
-                        <li class="navo-el">
-                            ELEMENT ON
-                        </li>
-                        <li class="navo-el">
-                            ELEMENT ON
-                        </li>
+                        @each(category in categories)
+                            <li class="navo-el">
+                            <a style="color: inherit" href={{ '/products?query=' + category._doc.title }}>{{ category._doc.title }}</a>
+                            </li>
+                        @endeach
                     </ul>
                 </div>
             </div>

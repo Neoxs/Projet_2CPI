@@ -29,7 +29,7 @@ router.get('/orders', isAuth, shopController.getOrders)
 //searching for products
 router.get('/products', shopController.getSearch)
 
-//searching for products
-router.post('/products', shopController.postSearch)
+// //searching for products
+// router.post('/products', shopController.postSearch)
 
 module.exports = router

@@ -39,6 +39,7 @@ exports.getSearch = async (req, res) => {
    try {
       // Extracting query data
       const { query, min ,max } = req.query
+      const categories = await Category.find({})
 
       // Fetching search results
 
@@ -56,6 +57,7 @@ exports.getSearch = async (req, res) => {
          path: '/products',
          pageTitle: 'Products',
          products: results,
+         categories,
          isAuthenticated: req.session.isAuthenticated
       })
 
@@ -159,24 +161,6 @@ exports.getOrders = async (req, res) => {
       const orders = await Order.find({ "user.userId": req.session.user._id.toString() })
       res.send(orders)
    } catch(err){
-      res.status(400).send(err.message)
-   }
-}
-
-exports.postSearch = async (req, res) => {
-   try {
-      //const { category, minPrice, maxPrice } = req.body
-      const category = req.body.category || ""
-      const minPrice = req.body.minPrice || 0
-      const maxPrice = req.body.maxPrice || 1000
-
-      const results = await Product.find({
-         category: category,
-         price: { $gt: minPrice, $lt: maxPrice }
-      })
-      res.send(results)
-   }catch(err){
-      console.log(err.message)
       res.status(400).send(err.message)
    }
 }
