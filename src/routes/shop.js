@@ -17,6 +17,9 @@ router.post('/cart', isAuth, shopController.postCart)
 //Loading the cart
 router.get('/cart', isAuth, shopController.getCart)
 
+//Remove item from Cart
+router.get('/cart/:productId', isAuth, shopController.removeFromCart)
+
 //Creating an order
 router.post('/create-order', isAuth, shopController.postOrder)
 

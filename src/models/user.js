@@ -84,6 +84,20 @@ userSchema.methods.addToCart = function (product, quantity) {
     return user
 }
 
+userSchema.methods.removeFromCart = function (product) {
+    const user = this
+    //console.log(this)
+    const updatedCartItems = user.cart.items.filter(cp => {
+        return cp.productId.toString() !== product._id.toString()
+    })
+
+    const updatedCart = {
+         items: updatedCartItems
+    }
+    user.cart = updatedCart
+    return user
+}
+
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
 

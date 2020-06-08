@@ -1,50 +1,65 @@
 @layout('layouts.app')
-@section('main-content')  
-<table class="table table-hover">
-        <thead>
-            <tr>
-                <th>PRODUCT</th>
-                <th>quantity</th>
-                <th>unit Price</th>
-                <th>price</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            @each(item in items)
-                <tr style="vertical-align: middle;">
-                    <th scope="row" style="vertical-align: middle;">
-                        <div class="pro" style="display: inline;">
-                            <img src={{item.productId._doc.imageURL}} style="width: 100px; overflow: hidden; display: inline-block;" />
-                            <p style="display: inline;">{{item.productId.title}}</p>
-                        </div>
-                    </th>
-                    <td style="vertical-align: middle;">{{item.quantity}}</td>
-                    <td style="vertical-align: middle;">{{item.productId.price}}</td>
-                    <td id="price" style="vertical-align: middle;">{{item.productId.price * item.quantity}}</td>
-                    <td style="vertical-align: middle;">
-                        <a><i class="fas fa-times"></i></a>
-                    </td>
-                </tr>
+@section('main-content') 
+<div class="container text-center" style="margin: 40px auto">
+    <div class="card">
+        <div class="card-body text-center">
+        @if(total > 0) 
+            <div class="container-fluid">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>PRODUCT</th>
+                            <th>quantity</th>
+                            <th>unit Price</th>
+                            <th>price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            @each(item in items)
+                                <tr style="vertical-align: middle;">
+                                    <th scope="row" style="vertical-align: middle;">
+                                        <div class="pro" style="display: inline;">
+                                            <img src={{item.productId._doc.imageURL}} style="width: 100px; overflow: hidden; display: inline-block;" />
+                                            <p style="display: inline;">{{item.productId.title}}</p>
+                                        </div>
+                                    </th>
+                                    <td style="vertical-align: middle;">{{item.quantity}}</td>
+                                    <td style="vertical-align: middle;">{{item.productId.price}}</td>
+                                    <td id="price" style="vertical-align: middle;">{{item.productId.price * item.quantity}}</td>
+                                    <td style="vertical-align: middle;">
+                                    <a href={{'/cart/' + item.productId._doc._id}}><i class="fas fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                
+                            @endeach
+                        <tr class="total">
+                            <th scope="row"></th>
+                            <td></td>
+                            <td><h4>total price</h4></td>
+                            <td>
+                                <h4 class="h4-responsive">
+                                    <span class="green-text">
+                                        <strong id="totalPrice">{{ total }} DZD</strong>
+                                    </span>
+                                </h4>
+                            </td>
+                            <td></td>
+                        </tr>
+                        
+                    </tbody>
+                        
+                </table>
+            </div>
+            @else
                 
-            @endeach
-            <tr class="total">
-                <th scope="row"></th>
-                <td></td>
-                <td><h4>total price</h4></td>
-                <td>
-                    <h4 class="h4-responsive">
-                        <span class="green-text">
-                            <strong id="totalPrice">{{ total }} DZD</strong>
-                        </span>
-                    </h4>
-                </td>
-                <td></td>
-            </tr>
-            
-        </tbody>
-            
-    </table>
+                <h3 class="">No item in cart!</h3> 
+                        
+            @endif
+        </div>
+    </div>
+</div>
     <div class="modal-footer">
             <div style="position: absolute; left: 2%; display: inline;">
                 <!-- Default checked -->
@@ -61,7 +76,9 @@
                 </div>
             </div>
             <a href="/products" type="button" class="btn btn-outline-primary" data-dismiss="modal">Return Shopping</a>
-            <button class="btn btn-primary">Buy</button>
+            @if(total > 0)
+                <button class="btn btn-primary">Buy</button>
+            @endif
         </div>
         <script>
                 document.querySelector('.form-control').addEventListener('focus', function (){

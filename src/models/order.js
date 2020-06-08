@@ -5,9 +5,9 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    products: [
+    items: [
         {
-            product: { type: Object, required: true },
+            productId: { type: mongoose.ObjectId, required: true },
             quantity: { type: Number, required: true }
         }
     ],

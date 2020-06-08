@@ -82,6 +82,23 @@ exports.postCart = async(req,res) => {
    }
 }
 
+exports.removeFromCart = async(req,res) => {
+   const prodId = req.params.productId
+   //console.log(prodId)
+   try {
+      const product = await Product.findById(prodId)
+      const user = new User(req.session.user)
+      //console.log(user)
+      //console.log(quantity)
+      req.session.user = user.removeFromCart(product)
+      await req.session.save()
+      res.redirect('/cart')
+   }catch(e){
+      console.log(e.message)
+      res.status(400).send(e.message)
+   }
+}
+
 exports.getCart = async(req,res) => {
    let user = new User(req.session.user)
    try {
@@ -90,7 +107,13 @@ exports.getCart = async(req,res) => {
       //console.log(items[0])
       const prices = items.map(item => item.productId._doc.price * item.quantity)
       //console.log(prices)
-      const total = prices.reduce((accumulator, currentValue) => accumulator + currentValue) 
+      let total
+      if (prices.length > 0) {
+         total = prices.reduce((accumulator, currentValue) => accumulator + currentValue)
+      } else {
+         total = 0
+      }
+   
       res.render('shop.checkout', {
          path: '/cart',
          pageTitle: 'Cart',
