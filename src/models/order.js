@@ -5,9 +5,13 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdAt: { 
+        type: Date,
+        default: Date.now
+     },
     items: [
         {
-            productId: { type: mongoose.ObjectId, required: true },
+            product: { type: Object, required: true },
             quantity: { type: Number, required: true }
         }
     ],
@@ -19,7 +23,7 @@ const orderSchema = new mongoose.Schema({
         userId: {
             type: mongoose.ObjectId,
             required: true,
-            red: 'User'
+            ref: 'User'
         }
     }
 })

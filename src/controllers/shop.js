@@ -140,10 +140,11 @@ exports.postOrder = async (req, res) => {
             name: req.session.user.username,
             userId: req.session.user._id
          },
-         products: products,
+         items: products,
          orderId: uniqid('Agora-')
       })
       await order.save()
+      //console.log(order)
       req.session.user.cart.items = []
       await req.session.save()
       res.send(order)

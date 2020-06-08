@@ -77,7 +77,9 @@
             </div>
             <a href="/products" type="button" class="btn btn-outline-primary" data-dismiss="modal">Return Shopping</a>
             @if(total > 0)
-                <button class="btn btn-primary">Buy</button>
+                <form action="/create-order" method="post">
+                    <button class="btn btn-primary">Buy</button>
+                </form>
             @endif
         </div>
         <script>
