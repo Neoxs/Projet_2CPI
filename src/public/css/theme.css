@@ -4737,7 +4737,11 @@ section {
 .table-data3 tbody td.denied {
     color: #fa4251;
 }
-
+.table-data3 tbody td.orderSearch{
+    color:black;
+    size:10px;
+    background-color: #69cbf1;
+}
 /* ----- Footer ----- */
 .copyright {
     text-align: center;

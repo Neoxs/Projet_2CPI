@@ -1,71 +1,25 @@
 const express = require('express')
-const Product = require('../models/product')
-const Category = require('../models/category')
-
+var AdminController = require('../controllers/AdminController')
 
 const router = new express.Router()
 
-router.get('/admin',(req,res)=>{
-    Product.find((err, docs) => {
-        res.render('admin/dash',{
-            list:docs, 
-            strList:JSON.stringify(docs)
-        }) 
-    });
+router.get('/admin_register',(req,res)=>{return res.render('admin/index')})
 
+router.post('/admin_register',AdminController.register)
 
-})
+router.get('/admin_login',(req,res)=>{ return  res.render('admin/login')})
 
-router.post('/admin', (req, res) => {
-   
-    if (req.body.id == '' || req.body.id == undefined)
-       insertProduct(req, res);
-    else
-       updateProduct(req, res);
-      
-});
+router.post('/admin_login',AdminController.login);
 
+router.get('/admin', AdminController.access)
 
-router.get('/admin/delete/:id', (req, res) => {
-    Product.findByIdAndRemove(req.params.id, (err, doc) => {
-     if(!err){
-         res.redirect('../../admin');
-     }
-     else 
-         console.log('Error in Product delete :' + err);
-         
-   
-      
-    });
-});
+router.get('/admin/logout',AdminController.logout)
 
+router.post('/admin/:prms',AdminController.productsChange)  //get data from froms and search input
 
+router.post('/admin',AdminController.getOrder);
 
-
-function insertProduct(req,res){
-    var product = new Product();
-    product.title = req.body.title;
-    product.price = req.body.price;
-    product.category = req.body.category;
-    product.description = req.body.description;
-    product.imageUrl = "req.body.imageUrl";
-
-    
-    product.save();
-    res.redirect('/admin');
-}
-
-
-
-function updateProduct(req, res) {
-    Product.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, (err, doc) => {
-        if (!err) { 
-             res.redirect('/admin'); 
-             }
-        else console.log('updating Product err'+err)
-    });
-}
-
+router.get('/admin/delete/:id',AdminController.delete)
 
 // make route accessible to other files
 module.exports = router;
