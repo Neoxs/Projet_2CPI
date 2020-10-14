@@ -1,67 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-      
-.navo-el {
-    color: white;
-    margin-top: 16px ;
-    margin-bottom: 16px ;
-    border-bottom:1px solid #4285f4 ;
-    padding-bottom: 3%;
-}
-.navo-el:hover {
-    color: #4285f4;
-    border-bottom: 1px solid white;
-    cursor: pointer;
-}
-.view > img {
-   display: inline;
-
-}
-
-.zoom {
-    display: inline;
-}
-
-.zoom:hover {
-z-index: 555;
-
-}
-.price_definer {
-    text-align: center;
-}
-
-@media only screen and (max-width: 768px){
-.navo-el {
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.navside {
-    display: inline;
-    text-align: center;
-}
-.oppo {
-    text-align: center;
-}
-}
-
-@media only screen and (max-width: 850px){
-    .img-fluid {
-        width: 40%;
-    }
-    
-}
-@media only screen and (max-width: 990px){
-    .cart{
-        position: absolute;
-        left: 40%;
-        bottom: 2%;
-        
-    }
-    
-    </style>
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../../public/vendors/mdb/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="example.css" >
@@ -70,7 +10,7 @@ z-index: 555;
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark special-color" style="position: sticky;width: 100%;z-index: 16;margin-bottom: 250px;">
+    <nav class="navbar navbar-expand-lg navbar-dark special-color" style="position: sticky;width: 100%;z-index: 16;">
 
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#">Navbar</a>
@@ -118,106 +58,102 @@ z-index: 555;
       
       </nav>
       <!--/.Navbar-->
+   
+
+      <p style="color: green;margin: 30px 38%;font-size: large;">
+        thank you ,your order has been received
+      </p>
 
 
-      @layout('layouts.app')
+   
+      
+   
+      <div class="container" style="margin-top: 45px;margin-bottom: 50px; ">
+        <div class="row">
+          <div class="col-sm" >
+            <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"> ORDER INFO </div>
+            <div class="element" style="padding: 3%;">
+               <p><span id="attrubute" >atrubute       : </span><span id="value">   value</span></p>
+                <p><span id="attrubute" >atrubute       : </span><span id="value">   value</span></p>
+                <p><span id="attrubute" >atrubute       : </span><span id="value">   value</span></p>
+                <p><span id="attrubute" >atrubute       : </span><span id="value">   value</span></p>
 
-      @section('main-content')
-      
-          <div style="height: 8px;"></div>
-          <div class="container-fluid" style="margin-bottom: 15px;" >
-              <div class="row">
-                  <!-- Sidebar-->            
-                  <div class="col-lg-3 col-md-3 oppo" style="background-color: #37474f;">
-                      <div class="container-fluid oppo">
-                          <ul style="list-style: none; padding-top: 15%; padding-left: 0;" class="navside">
-                              <li class="navo-el">
-                                  ELEMENT ON
-                              </li>
-                              <li class="navo-el">
-                                  ELEMENT ON
-                              </li>
-                              <li class="navo-el">
-                                  ELEMENT ON
-                              </li>
-                              <li class="navo-el">
-                                  ELEMENT ON
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-                  <!-- Sidebar-->
-      
-                  <!-- Main-->
-                  <div class="col-lg-9 col-md-9" style="background-color: #f1f1f1;">
-                      <!-- <form class="range-field my-4 w-25">
-                                  <input type="range" min="0" max="100" />
-                              </form> -->
-                      <div class="continer">
-                          
-                              <form action="/products" method="get" class="row">
-      
-                                  <div class="col-lg-6" style="text-align: center;">
-                                          <h3 style="color: #495057;">what's your product</h3>
-                                          <div class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
-                                              <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search" />
-                                              <i class="fas fa-search" aria-hidden="true" style="color: #4285f4;"></i>
-                                          </div>
-                                      </div>
-                                      <div class="col-lg-2 col-md- col-sm-6 col-xs-6 price_definer">
-                                          <h3 style="color: #495057;">min price</h3>
-                                          <div class="def-number-input number-input safari_only" style="display: inline-block;">
-                                              <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(50)" class="minus"></button>
-                                              <input class="quantity" min="0" name="min" value="1" type="number" />
-                                              <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(50)" class="plus"></button>
-                                          </div>
-                                      </div>
-                          
-                                      <div class="col-lg-2 col-md- col-sm-6 col-xs-6 price_definer">
-                                          <h3 style="color: #495057;">max price</h3>
-                                          <div class="def-number-input number-input safari_only" style="display: inline-block;">
-                                              <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(50)" class="minus"></button>
-                                              <input class="quantity" min="0" name="max" value="200" type="number" />
-                                              <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(50)" class="plus"></button>
-                                          </div>
-                                      </div>
-                                      <button class="btn btn-primary col-lg-2" type="submit">Search</button>
-                              </form>
-                              
-                          
-                          <div class="row" style="text-align: center;">
-                              <div data-spy="scroll" class="scrollspy-example z-depth-1 mt-4" style="height: 380px;" style="text-align: center;">
-                                  <div class="container-fluid">
-                                      <div class="row" style="text-align: center;">
-                                          <div style="display: inline-block;">
-                                              <!-- <div class="col-lg-12"> --> 
-                                              @each(product in products)
-                                                  <a href={{/product/ + product._doc._id}}>
-                                                      <div class="view overlay zoom" style="overflow: hidden;">
-                                                          <img src="../../public/img/food.jpg" class="img-fluid" alt="zoom" />
-                                                          <div class="mask flex-center waves-effect waves-light">
-                                                              <p class="white-text">check product</p>
-                                                          </div>
-                                                      </div>    
-                                                  </a>
-                                                  
-                                              @endeach
-                  
-                                              <!-- </div> -->
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <!-- Main-->
-      
-              </div>
+            </div>
           </div>
-      
-<!-- Footer -->
+          <div class="col-sm" >
+            <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"> ORDER INFO </div>
+
+            <div class="element" style="padding: 3%;">
+               <p><span id="attrubute" >atrubute : </span><span id="value">value</span></p>
+               <p><span id="attrubute" >atrubute : </span><span id="value">value</span></p>
+
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"> ORDER INFO </div>
+
+            <div class="element" style="padding: 3%;">
+              <p><span id="attrubute" >atrubute : </span><span id="value">value</span></p>
+               <p><span id="attrubute" >atrubute : </span><span id="value">value</span></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="background-color: #f1f1f1; " >
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order products</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>product</td>
+              <td>Quantity</td>
+              <td>Total</td>
+            </tr>
+            <tr>
+              <td>coffe</td>
+              <td>x2</td>
+              <td>1200$</td>
+            </tr>
+            <tr>
+               <td>juice</td>
+              <td>x3</td>
+              <td>400$</td>
+            </tr>
+            
+            <tr >
+              <td>subtotal</td>
+             <td></td>
+             <td>216.00$</td>
+           </tr>
+           
+           <tr>
+            <td>SHIPPING</td>
+           <td></td>
+           <td>Flat rate : 50.00$</td>
+         </tr>
+         <tr>
+          <td>TOTAL</td>
+         <td></td>
+         <td>2210.00 $</td>
+       </tr>
+          </tbody>
+        </table>
+        
+      </div>
+      <div style="float: right; margin-bottom: 50px;">
+      <button class="btn btn-primary">Download pdffile</button>
+    </div>
+
+
+
+      <!-- Footer -->
 <footer class="page-footer font-small feet pt-4" ">
 
     <!-- Footer Links -->
