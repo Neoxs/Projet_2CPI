@@ -77,34 +77,7 @@
                                     <i class="fas fa-users"></i>
                                     <span class="bot-line"></span>Users</a>
                             </li>
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-desktop"></i>
-                                    <span class="bot-line"></span>Settings</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="button.html">Button</a>
-                                    </li>
-                                    <li>
-                                        <a href="badge.html">Badges</a>
-                                    </li>
-                                    <li>
-                                        <a href="card.html">Cards</a>
-                                    </li>
-                                    <li>
-                                        <a href="modal.html">Modals</a>
-                                    </li>
-                                    <li>
-                                        <a href="switch.html">Switchs</a>
-                                    </li>
-                                    <li>
-                                        <a href="grid.html">Grids</a>
-                                    </li>
-                                    <li>
-                                        <a href="typo.html">Typography</a>
-                                    </li>
-                                </ul>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="header__tool">
@@ -141,48 +114,10 @@
                                         <span class="date">April 12, 2018 06:50</span>
                                     </div>
                                 </div>
-                                <div class="notifi__footer">
-                                    <a href="#">All notifications</a>
-                                </div>
+
                             </div>
                         </div>
-                        <div class="header-button-item js-item-menu">
-                            <i class="zmdi zmdi-settings"></i>
-                            <div class="setting-dropdown js-dropdown">
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
-                                </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-globe"></i>Language</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-pin"></i>Location</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-email"></i>Email</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-notifications"></i>Notifications</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
@@ -511,8 +446,8 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">1,368</h2>
-                                <span class="desc">Members online</span>
+                                <h2 class="number">{{nmbrUsers}}</h2>
+                                <span class="desc">Users Number</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
@@ -572,20 +507,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cursor">
-                                        <tr>
-                                            <td>5625690Csj43kd</td>  
-                                            <td>Imad121</td>
-                                            <td>2018-09-29 05:57</td>
-                                            <td >product1<br>prduct2</td>
-                                            <td class="process">999$</td>
-                                            <td>  
-                                                <div class="table-data-feature">
-                                                    <button   class="item"   data-toggle="tooltip" data-placement="top" title="Send to Client" >
-                                                        <i class="zmdi zmdi-check"></i>
-                                                     </button>               
-                                                </div>
-                                            </td>
-                                            </tr>
+
                                          @each(list in orderSearch)
                                             <tr class="trSearch">
                                                 <td class="orderSearch">{{list.orderId}}</td>  
@@ -612,18 +534,40 @@
                                                          <button   class="item"   data-toggle="tooltip" data-placement="top" title="Send to Client"  onclick=" confirm('prepare this list');location.href='admin/delete/{{list2._id}}?item=order'">
                                                              <i class="zmdi zmdi-check"></i>
                                                         </button> 
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More" data-toggle="modal"  data-target="#orderDetailModal">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
+
                     
                                             </tr>
                                         @endeach
-                                                                                           
+                                        <div class="modal fade" id="orderDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>                                             
                     
                                         @each(ls2 in allOrders)  
                                             <tr class="dispAct">
                                                     <td>{{ls2.orderId}}</td>
                                                     <td>{{ls2.user.name}}</td>
-                                                    <td>{{ls2.createdAt}}</td>
+                                                    <td>{{ls2.date}}</td>
                                                     <td class="clr">
                                                     @set('x1',0)
                                                     @each(ls21 in ls2.items) 
@@ -643,8 +587,12 @@
                                                         <div class="table-data-feature">
                                                             <button   class="item"   data-toggle="tooltip" data-placement="top" title="Send to Client" onclick=" confirm(' Are you ready to prepare this order --{{ls2.orderId}}-- ');location.href='admin/delete/{{ls2._id}}?item=order'">
                                                                 <i class="zmdi zmdi-check"></i>
-                                                            </button>               
+                                                            </button>  
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More" data-toggle="modal"  data-target="#orderDetailModal" >
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>             
                                                         </div>
+
                                                     </td>
                     
                                             </tr>
@@ -660,26 +608,8 @@
                         <div class="col-md-12">
                             <h2 class="title-1 m-b-25" >Products List</h2>
                             <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                    <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="property">
-                                            <option selected="selected">All Properties</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                    <div class="rs-select2--light rs-select2--sm">
-                                        <select class="js-select2" name="time">
-                                            <option selected="selected">Today</option>
-                                            <option value="">3 Days</option>
-                                            <option value="">1 Week</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                    <button class="au-btn-filter">
-                                        <i class="zmdi zmdi-filter-list"></i>filters</button>
-                                </div>
+                                    <div class="table-data__tool-left">  
+                                    </div>  
                                 <div class="table-data__tool-right">
                                     <button class="au-btn au-btn-icon au-btn--green au-btn--small"  data-toggle="modal" data-target="#exampleModal"> 
                                         <i class="zmdi zmdi-plus"></i>Add Product</button>
@@ -780,16 +710,10 @@
                                 <table class="table table-data2">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </th>
+
                                             <th>name</th>
                                             <th>image url</th>
                                             <th>description</th>
-                                            <th>date</th>
                                             <th>Category</th>
                                             <th>price</th>
                                             <th></th>
@@ -801,20 +725,13 @@
  
                                     @each(ls in productInfo)
                                         <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
                                             <td class="desc">{{ ls.title }}</td>
                                             <td>
                                                 <div class="input-group input-group-sm mb-1">
-                                                    <input type="text"  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="src/public/img/{{ls.imageUrl}}" disabled>
-                                                    <img src="img/{{ls.imageUrl}}" alt="Avatar" style="  border-radius: 50%;width:30px;margin-left:10px"></td>
+                                                    <input type="text"  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ls.imageURL}}" disabled>
+                                                    <img src="{{ls.imageURL}}" alt="Avatar" style="  border-radius: 50%;width:30px;margin-left:10px"></td>
                                                 </div>
-                                            <td >{{ ls.description }}</td>
-                                            <td>2018-09-27 02:12</td>
+                                            <td >{{ ls.description }}</td> 
                                             <td>
                                                 {{ ls.category }}
                                             </td>
@@ -828,9 +745,7 @@
                                                     <button   class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick=" confirm('Are you sure to delete this product ?');location.href='admin/delete/{{ls._id}}?item=product'">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
+
                                                 </div>
                                             </td>
                                         </tr>

@@ -167,14 +167,14 @@ exports.postOrder = async (req, res) => {
       //console.log(order)
       req.session.user.cart.items = []
       await req.session.save()
-      // const pdf = await generatePDF(order)
-      // res.writeHead(200, {
-      //    'Content-Type': 'application/pdf',
-      //    'Access-Control-Allow-Origin': '*',
-      //    'Content-Disposition': 'attachment; filename=bon.pdf'
-      // });
-      // pdf.pipe(res)
-      res.send(order)
+      const pdf = await generatePDF(order)
+      res.writeHead(200, {
+         'Content-Type': 'application/pdf',
+         'Access-Control-Allow-Origin': '*',
+         'Content-Disposition': 'attachment; filename=bon.pdf'
+      });
+      pdf.pipe(res)
+      // res.send(order)
    }catch(err){
       console.log(err.message)
       res.status(400).send(err.message)

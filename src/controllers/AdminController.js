@@ -5,7 +5,7 @@ const Order = require('../models/order')
 const User = require('../models/user')
 const Category = require('../models/category')
 const bcrypt = require('bcrypt');
-
+const moment = require('moment');
 
 
 exports.getOrder = (req,res)=>{
@@ -28,7 +28,8 @@ exports.getOrder = (req,res)=>{
         allOrders :docs[1] ,
         userInfo :docs[2],
         categoryList :docs[3],
-        orderSearch :docs[4], 
+        nmbrUsers :docs[4],
+        orderSearch :docs[5], 
      })
     })
  }   
@@ -107,12 +108,18 @@ exports.register = (req,res)=>{
                     if (err) {
                         throw err;
                     }
+                    const ordersList = docs[1].map(element => {
+                        const date = new Date(element.createdAt)
+                        element.date = moment(date).format('h:mma ,MMMM d ,YYYY')
+                        return element
+                    });
                  res.render('admin/test',{
                      productInfo :docs[0],            
                      strList:JSON.stringify(docs[0]),
-                     allOrders :docs[1] ,
+                     allOrders : ordersList ,
                      userInfo :docs[2],
                      categoryList :docs[3],
+                     nmbrUsers :docs[4],
                      adminName:req.session.userId,
                      adminEmail:req.session.email
                  })
@@ -225,6 +232,14 @@ exports.register = (req,res)=>{
               clb(null, docs);
           }); 
       })
+      queries.push( (clb)=>{
+        User.count({},function(err,count){
+            if(err){
+                throw clb(err);
+            }
+            clb(null,count)
+        });
+    }) 
      return queries
     }
 
@@ -237,7 +252,7 @@ exports.register = (req,res)=>{
         product1.price = req.body.price;
         product1.category = req.body.category;
         product1.description = req.body.description;
-        product1.imageUrl ="/img/products/" + req.body.imagePath ;
+        product1.imageURL ="/img/products/" + req.body.imagePath ;
         product1.save();
     
         res.redirect('/admin'); 
@@ -245,9 +260,7 @@ exports.register = (req,res)=>{
     
 
 
-
-
-    
+ 
      function updateProduct(req, res) {
         Product.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, (err, doc) => {
             if (!err) {res.redirect('/admin')}
@@ -266,6 +279,3 @@ exports.register = (req,res)=>{
         res.redirect('/admin'); 
      }
     
-
-
-     
