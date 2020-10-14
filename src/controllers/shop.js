@@ -174,11 +174,39 @@ exports.postOrder = async (req, res) => {
       //    'Content-Disposition': 'attachment; filename=bon.pdf'
       // });
       // pdf.pipe(res)
-      res.send(order)
+      const date = new Date(order.createdAt)
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      order.date = day + '/' + month + '/' + year
+
+
+      res.render('shop.confirmation', {
+         path: '/checkout',
+         pageTitle: 'Checkout',
+         order,
+         items: order.items,
+         isAuthenticated: req.session.isAuthenticated
+      })
    }catch(err){
       console.log(err.message)
       res.status(400).send(err.message)
    }
+}
+
+exports.getPDF = async (req, res) => {
+   const user = new User(req.session.user)
+   //console.log(user)
+   const lastOrder = await Order.findOne({ "user.userId": req.session.user._id.toString() }).sort({createdAt: -1})
+   
+   const pdf = await generatePDF(lastOrder)
+   res.writeHead(200, {
+      'Content-Type': 'application/pdf',
+      'Access-Control-Allow-Origin': '*',
+      'Content-Disposition': 'attachment; filename=bon.pdf'
+   });
+   pdf.pipe(res)
 }
 
 exports.getOrders = async (req, res) => {
