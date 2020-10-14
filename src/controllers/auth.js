@@ -11,30 +11,43 @@ exports.getSignup = (req, res) => {
 exports.postSignup = async(req, res) => {
     const { username, email, password, confirmPassword } = req.body
     const isValid = (password === confirmPassword)
- 
-    if(!isValid) {
-       res.render('auth/register', {
-          pageTitle: 'Signup',
-          path: '/register',
-          isAuthenticated: req.session.isAuthenticated,
-          error: 'Password does not match'
-       })
-    } else {
-       delete req.body.confirmPassword
-       const user = new User(req.body)
- 
-       try {
-             await user.save()
-             res.redirect('/login')
-       } catch (e) {
-             res.render('auth/register', {
-                pageTitle: 'Signup',
-                path: '/register',
-                isAuthenticated: req.session.isAuthenticated,
-                error: e.message
-             })
-       }
+
+    try {
+        if(!isValid) {
+            res.render('auth/register', {
+               pageTitle: 'Signup',
+               path: '/register',
+               isAuthenticated: req.session.isAuthenticated,
+               error: 'Password does not match'
+            })
+        } else {
+            const userExist = await User.find({$or:[ {'email': email.toLowerCase()}, {'username': username.toLowerCase()}]})
+            if (userExist) {
+                res.render('auth/register', {
+                    pageTitle: 'Signup',
+                    path: '/register',
+                    isAuthenticated: req.session.isAuthenticated,
+                    error: 'This user already Exist !'
+                })
+            } else {
+        
+                delete req.body.confirmPassword
+                const user = new User(req.body)
+                await user.save()
+                res.redirect('/login')
+            }
+     
+        }
+    } catch(e) {
+        res.render('auth/register', {
+            pageTitle: 'Signup',
+            path: '/register',
+            isAuthenticated: req.session.isAuthenticated,
+            error: e.message
+         })
     }
+ 
+    
  
 }
 
@@ -62,7 +75,7 @@ exports.postLogin = async (req, res) => {
           pageTitle: 'Login',
           isAuthenticated: req.session.isAuthenticated,
           user: req.session,
-          error: e.message
+          error: 'Password or Email is wrong, please try again!'
        })
     }
 }

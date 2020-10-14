@@ -62,7 +62,7 @@
                         
                     
                     <div class="row" style="text-align: center;">
-                        <div data-spy="scroll" class="scrollspy-example z-depth-1 mt-4" style="height: 380px;" style="text-align: center;">
+                        
                             <div class="container-fluid">
                                 <div class="row" style="text-align: center;">
                                     
@@ -70,7 +70,7 @@
                                         @each(product in products)
                                             <a class="col-lg-4 col-xl-4 col-md-6 col-sm-6" href={{'/product/' + product._doc._id}}>
                                                 <div class="view overlay zoom">
-                                                    <img src={{product._doc.imageUrl}} class="img-fluid" style="height: 160px; width: 98%; object-fit: cover; margin: 2%;" alt="zoom" />
+                                                    <img src={{product._doc.imageURL}} class="img-fluid" style="height: 160px; width: 98%; object-fit: cover; margin: 2%;" alt="zoom" />
                                                     <div class="mask flex-center waves-effect waves-light">
                                                         <p class="white-text">check product</p>
                                                     </div>
@@ -83,7 +83,7 @@
                                     
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
