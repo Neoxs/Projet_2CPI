@@ -4,6 +4,8 @@ const Order = require('../models/order')
 const Category = require('../models/category')
 const mongoose = require('mongoose')
 const uniqid = require('uniqid')
+const {generatePDF} = require('../helpers/pdf')
+const path = require('path');
 
 
 exports.getHome = async (req, res) => {
@@ -137,18 +139,41 @@ exports.postOrder = async (req, res) => {
          return { quantity: i.quantity, product: { ...i.productId._doc } }
       })
       //console.log(user)
+
+      let total = 0
+
+      products.forEach(prod => {
+         //console.log(prod.quantity)
+         const price =  prod.product.price
+         const qnt = prod.quantity
+         //console.log(parseInt(prod.quantity) * parseInt(prod.product.price))
+         if(prod.quantity && prod.product.price) {
+            total += qnt * price
+         } 
+            
+      });
+
+      //console.log(total)
       const order = new Order({
          user: {
             name: req.session.user.username,
             userId: req.session.user._id
          },
          items: products,
-         orderId: uniqid('Agora-')
+         orderId: uniqid('AGORA-'),
+         total: parseInt(total)
       })
       await order.save()
       //console.log(order)
       req.session.user.cart.items = []
       await req.session.save()
+      // const pdf = await generatePDF(order)
+      // res.writeHead(200, {
+      //    'Content-Type': 'application/pdf',
+      //    'Access-Control-Allow-Origin': '*',
+      //    'Content-Disposition': 'attachment; filename=bon.pdf'
+      // });
+      // pdf.pipe(res)
       res.send(order)
    }catch(err){
       console.log(err.message)
