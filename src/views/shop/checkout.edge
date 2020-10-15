@@ -68,23 +68,73 @@
                     <label class="custom-control-label" for="defaultChecked2">delivery </label>
                 </div>
                 <!-- Material input -->
-                <div style="display: inline-block;">
-                    <div class="md-form form-lg" style="display: none; margin-left: 20px;" id="text">
-                        <input type="text" id="inputLGEx" class="form-control form-control-lg active" />
-                        <label for="inputLGEx"></label>
-                    </div>
-                </div>
+                
             </div>
-            <a href="/products" type="button" class="btn btn-outline-primary" data-dismiss="modal">Return Shopping</a>
+            <a href="/products" id='returnShop' type="button" class="btn btn-outline-primary" data-dismiss="modal">Return Shopping</a>
             @if(total > 0)
-                <form action="/create-order" method="post">
+                <form action="/create-order" id='buyShop' method="post">
                     <button class="btn btn-primary">Buy</button>
                 </form>
             @endif
         </div>
+        <form action="/create-order" method="POST" id="text" style="display: none; margin-bottom: 15px; padding: 7px;">
+                <div class="container-fluid" style="margin: 40px auto;">
+                    <div class="card text-center">
+                        <div class="card" style="padding: 15px;">
+                            <!-- Grid row -->
+                            <div class="form-row">
+        
+                                <!-- Grid column -->
+                                <div class="col-md-6">
+                                    <!-- Material input -->
+                                    <div class="md-form form-group">
+                                        <input name="phoneNum" required type="text" class="form-control" id="phoneNum" />
+                                        <label class="active">Phone number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- Material input -->
+                                    <div class="md-form">
+                                    <input name="date" required type="datetime-local" id="date-picker-example" class="form-control datepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Grid row -->
+            
+                            <!-- Grid row -->
+                            <div class="row">
+                                <!-- Grid column -->
+                                <div class="col-md-12">
+                                    <!-- Material input -->
+                                    <div class="md-form form-group">
+                                        <input type="text" required name="street" class="form-control" id="inputAddressMD" />
+                                        <label for="inputAddressMD" class="active">Street</label>
+                                    </div>
+                                </div>
+                                <!-- Grid column -->
+            
+                                <!-- Grid column -->
+                                <div class="col-md-12">
+                                    <!-- Material input -->
+                                    <div class="md-form form-group">
+                                        <input type="text" required name="town" class="form-control" id="inputAddress2MD" />
+                                        <label for="inputAddress2MD" class="active">Town</label>
+                                    </div>
+                                </div>
+                                <!-- Grid column -->
+                            </div>
+                            <!-- Grid row -->
+            
+                            <button type="submit" class="btn btn-primary btn-md">confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
         <script>
                 document.querySelector('.form-control').addEventListener('focus', function (){
                 document.querySelector('.byad').style.display = 'none';});
+                document.querySelector('.datepicker').datepicker({ min: Date.now()})
                 
                 const prices = document.querySelector('#price')
                 let total = 0
@@ -97,12 +147,20 @@
                     var checkBox = document.getElementById("defaultChecked2");
                     // Get the output text
                     var text = document.getElementById("text");
+
+                    var returnShop = document.getElementById("returnShop");
+                    var buyShop = document.getElementById("buyShop");
                     
                     // If the checkbox is checked, display the output text
                     if (checkBox.checked == true){
                         text.style.display = "block";
+                        buyShop.style.display = "none";
+                        returnShop.style.display = 'none'
                     } else {
-                        text.style.display = "none";
+                        returnShop.style.display = 'inline-block'
+                        buyShop.style.display = 'inline-block'
+                        text.style.display = 'none'
+
                     }
                 }
             </script>

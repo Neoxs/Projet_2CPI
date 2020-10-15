@@ -123,6 +123,7 @@ exports.getCart = async(req,res) => {
          path: '/cart',
          pageTitle: 'Cart',
          items,
+         todayDate: Date.now(),
          total,
          isAuthenticated: req.session.isAuthenticated
       })
@@ -160,9 +161,15 @@ exports.postOrder = async (req, res) => {
             name: req.session.user.username,
             userId: req.session.user._id
          },
+         shippingInfo: {
+            phone: req.body.phone,
+            street: req.body.street,
+            town: req.body.town,
+            date: req.body.date ? new Date(req.body.date) : null
+         },
          items: products,
-         orderId: uniqid('AGORA-'),
-         total: parseInt(total)
+         orderId: uniqid.time('AGORA-'),
+         total: req.body.street && req.body.town ? parseInt(total) + 100 : parseInt(total)
       })
       await order.save()
 
@@ -177,18 +184,46 @@ exports.postOrder = async (req, res) => {
       //console.log(order)
       req.session.user.cart.items = []
       await req.session.save()
-      const pdf = await generatePDF(order)
-      res.writeHead(200, {
-         'Content-Type': 'application/pdf',
-         'Access-Control-Allow-Origin': '*',
-         'Content-Disposition': 'attachment; filename=bon.pdf'
-      });
-      pdf.pipe(res)
-      // res.send(order)
+      // const pdf = await generatePDF(order)
+      // res.writeHead(200, {
+      //    'Content-Type': 'application/pdf',
+      //    'Access-Control-Allow-Origin': '*',
+      //    'Content-Disposition': 'attachment; filename=bon.pdf'
+      // });
+      // pdf.pipe(res)
+      const date = new Date(order.createdAt)
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      order.date = day + '/' + month + '/' + year
+
+
+      res.render('shop.confirmation', {
+         path: '/checkout',
+         pageTitle: 'Checkout',
+         order,
+         items: order.items,
+         isAuthenticated: req.session.isAuthenticated
+      })
    }catch(err){
       console.log(err.message)
       res.status(400).send(err.message)
    }
+}
+
+exports.getPDF = async (req, res) => {
+   const user = new User(req.session.user)
+   //console.log(user)
+   const lastOrder = await Order.findOne({ "user.userId": req.session.user._id.toString() }).sort({createdAt: -1})
+   
+   const pdf = await generatePDF(lastOrder)
+   res.writeHead(200, {
+      'Content-Type': 'application/pdf',
+      'Access-Control-Allow-Origin': '*',
+      'Content-Disposition': 'attachment; filename=bon.pdf'
+   });
+   pdf.pipe(res)
 }
 
 exports.getOrders = async (req, res) => {

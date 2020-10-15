@@ -1,0 +1,93 @@
+@layout('layouts.app')
+@section('main-content')
+    <h2 style="color: green; margin-top: 35px; font-size: large; text-transform: uppercase; text-align: center">
+        Thank you ,your order has been received
+    </h2>
+
+    <div onload="getBill" class="container" style="margin-top: 45px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-sm">
+                <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"><b>Order Info</b></div>
+                <div class="element" style="padding: 3%;">
+                <p><span id="attrubute"><b>Order ID:</b> </span><span id="value"> {{order.orderId}}</span></p>
+                <p><span id="attrubute"><b>Order Date:</b> </span><span id="value"> {{order.date}}</span></p>
+                <p><span id="attrubute"><b>Total:</b> </span><span id="value"> {{order.total}} DZD</span></p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"><b>Billing Address</b></div>
+
+                <div class="element" style="padding: 3%;">
+                    <p><span id="attrubute"><b>Street:</b> </span><span id="value">Boulevard Emir Abdelkader, num26</span></p>
+                    <p><span id="attrubute"><b>Town:</b> </span><span id="value">SIDI-BEL-ABBES</span></p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"><b>Shipping Addresse</b></div>
+
+                <div class="element" style="padding: 3%;">
+                    <p><span id="attrubute"><b>Street:</b>  </span><span id="value">{{order.shippingInfo.street ? order.shippingInfo.street : ''}}</span></p>
+                    <p><span id="attrubute"><b>Town:</b> </span><span id="value">{{order.shippingInfo.town ? order.shippingInfo.town : ''}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background-color: #f1f1f1; margin-bottom: 100px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"><b>Order products</b></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td><b>product</b></td>
+                    <td><b>Quantity</b></td>
+                    <td><b>Total</b></td>
+                </tr>
+                @each(item in items)
+                  
+                    <tr>
+                        <td>{{item.product.title}}</td>
+                        <td><b>x{{item.quantity}}</b></td>
+                        <td>{{item.quantity * item.product.price}} DZD</td>
+                    </tr>
+                @endeach
+                 
+                <tr>
+                        <td><b>Shipping</b></td>
+                        <td></td>
+                        <td><b>{{ order.shippingInfo.street ? '100 DZD' : '0 DZD'}}</b></td>
+                    </tr>
+                <tr>
+                    <td><b>TOTAL</b></td>
+                    <td></td>
+                    <td><b>{{ order.total}} DZD</b></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal-footer">
+            <form action="/get-bill" id='buyShop' method="post">
+                <button class="btn btn-primary">Download Bill</button>
+            </form>
+        </div>
+            
+
+    </div>
+    <script>
+        function formatDate(date) {
+            const newDate = new Date(date)
+            const day = newDate.getDate();
+            const month = newDate.getMonth() + 1;
+            const year = newDate.getFullYear();
+        
+            return year + "/" + month + "/" + day;
+        }
+
+    </script>
+@endsection

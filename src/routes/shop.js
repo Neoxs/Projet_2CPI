@@ -32,4 +32,6 @@ router.get('/products', shopController.getSearch)
 // //searching for products
 // router.post('/products', shopController.postSearch)
 
+router.post('/get-bill', isAuth, shopController.getPDF)
+
 module.exports = router
