@@ -4,6 +4,7 @@ const Product = require('../models/product')
 const Order = require('../models/order')
 const User = require('../models/user')
 const Category = require('../models/category')
+const Total = require('../models/total')
 const bcrypt = require('bcrypt');
 const moment = require('moment');
 
@@ -22,14 +23,26 @@ exports.getOrder = (req,res)=>{
         if (err) {
             throw err;
         }
+        const ordersListSearch = docs[1].map(element => {
+            const date = new Date(element.createdAt)
+            element.date = moment(date).format('h:mma ,MMMM d ,YYYY')
+            return element
+        });
+        const ordersListSearch2 = docs[6].map(element => {
+            const date = new Date(element.createdAt)
+            element.date = moment(date).format('h:mma ,MMMM d ,YYYY')
+            return element
+        });
     res.render('admin/test',{
         productInfo :docs[0],
         strList:JSON.stringify(docs[0]),
-        allOrders :docs[1] ,
+        allOrders :ordersListSearch ,
         userInfo :docs[2],
         categoryList :docs[3],
         nmbrUsers :docs[4],
-        orderSearch :docs[5], 
+        totalearnings:docs[5],
+        orderSearch :ordersListSearch2, 
+
      })
     })
  }   
@@ -120,6 +133,7 @@ exports.register = (req,res)=>{
                      userInfo :docs[2],
                      categoryList :docs[3],
                      nmbrUsers :docs[4],
+                     totalearnings :docs[5],
                      adminName:req.session.userId,
                      adminEmail:req.session.email
                  })
@@ -240,9 +254,18 @@ exports.register = (req,res)=>{
             clb(null,count)
         });
     }) 
-     return queries
-    }
+    queries.push( (clb)=>{
+        Total.find({}).exec((err, docs)=>{
+            if (err) {
+                throw clb(err);
+            }
+            clb(null, docs);
+        }); 
+    })
 
+     return queries
+
+    }
 
 
 
@@ -258,6 +281,17 @@ exports.register = (req,res)=>{
         res.redirect('/admin'); 
     }
     
+    Total.count({},function(err,count){
+        if(count==0) 
+       { 
+        var total = new Total();
+        total.totalearnings  = 0;
+        total.save();
+    }
+    })
+
+
+
 
 
  

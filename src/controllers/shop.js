@@ -2,6 +2,7 @@ const Product = require('../models/product')
 const User = require('../models/user')
 const Order = require('../models/order')
 const Category = require('../models/category')
+const Total = require('../models/total')
 const mongoose = require('mongoose')
 const uniqid = require('uniqid')
 const {generatePDF} = require('../helpers/pdf')
@@ -164,6 +165,16 @@ exports.postOrder = async (req, res) => {
          total: parseInt(total)
       })
       await order.save()
+
+      Total.findOne({}, function (err, ttl) {
+         if (err) return handleError(err);
+         console.log(ttl.totalearnings);
+         Total.findOneAndUpdate({_id: ttl._id}, {$set: { totalearnings: ttl.totalearnings+total}}, {upsert: true}, function(err, doc) {
+            if (err) return res.send(500, {error: err});
+            
+        });
+       });      
+
       //console.log(order)
       req.session.user.cart.items = []
       await req.session.save()

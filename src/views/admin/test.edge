@@ -121,7 +121,7 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                <img src="img/icon/avatar-03.jpg" alt="{{adminName}}" />
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTW8SpKYYlvf8m-fbYPhzeB3jbIMkBW-4QH2g&usqp=CAU" alt="{{adminName}}" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{adminName}}</a>
@@ -348,7 +348,8 @@
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">
-                            <img src="img/icon/avatar-01.jpg" alt="John Doe" />
+                            <i class="fas fa-user"></i>
+                           
                         </div>
                         <div class="content">
                             <a class="js-acc-btn" href="#">Imad Mansour</a>
@@ -473,7 +474,11 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--red">
-                                <h2 class="number">$1,060,386</h2>
+                                <h2 class="number">
+                                    @each(ls33 in totalearnings)
+                                     {{ls33.totalearnings}}
+                                     @endeach
+                                    </h2>
                                 <span class="desc">Total earnings</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
@@ -512,7 +517,7 @@
                                             <tr class="trSearch">
                                                 <td class="orderSearch">{{list.orderId}}</td>  
                                                 <td  class="orderSearch">{{list.user.name}}</td>
-                                                <td  class="orderSearch">{{list.createdAt}}</td>
+                                                <td  class="orderSearch">{{list.date}}</td>
                                                 <td class="orderSearch">
                                                 @set('x',0)
                                                 @each(list2 in list.items) 
@@ -534,7 +539,7 @@
                                                          <button   class="item"   data-toggle="tooltip" data-placement="top" title="Send to Client"  onclick=" confirm('prepare this list');location.href='admin/delete/{{list2._id}}?item=order'">
                                                              <i class="zmdi zmdi-check"></i>
                                                         </button> 
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More" data-toggle="modal"  data-target="#orderDetailModal">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More" data-toggle="modal"  data-target="#orderdetailModal1">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button>
                                                     </div>
@@ -543,52 +548,89 @@
                     
                                             </tr>
                                         @endeach
-                                        <div class="modal fade" id="orderDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                  </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                  ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>                                             
-                    
                                         @each(ls2 in allOrders)  
                                             <tr class="dispAct">
                                                     <td>{{ls2.orderId}}</td>
                                                     <td>{{ls2.user.name}}</td>
                                                     <td>{{ls2.date}}</td>
                                                     <td class="clr">
-                                                    @set('x1',0)
-                                                    @each(ls21 in ls2.items) 
-                    
-                    
-                                                        @if($loop.index==0) 
-                                                            <div class="clr">      {{$loop.index+1}}  -  {{ls21.product.title}} ({{ls21.quantity}}) <div><br>
-                                                        @elseif($loop.index>0)
-                                                            <div class="dispNone"> {{$loop.index+1}}  - {{ls21.product.title}}  ({{ls21.quantity}}) </div><br>
-                                                        @endif
-                                                        @set('total2',x1 + ls21.product.price * ls21.quantity)
+                                                        @set('x1',0)
+                                                        @each(ls21 in ls2.items) 
+                        
+                        
+                                                            @if($loop.index==0) 
+                                                                <div class="clr">      {{$loop.index+1}}  -  {{ls21.product.title}} ({{ls21.quantity}}) <div><br>
+                                                            @elseif($loop.index>0)
+                                                                <div class="dispNone"> {{$loop.index+1}}  - {{ls21.product.title}}  ({{ls21.quantity}}) </div><br>
+                                                            @endif
+                                                            @set('total2',x1 + ls21.product.price * ls21.quantity)
+                                                        @endeach
+                                                        </td>
+                                                        <td class="process">{{total2}}$</td>
+                                                    {{-- form1   --}}
+                                                    <div class="modal fade" id="orderdetailModal{{$loop.index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                          <div class="modal-content">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                  <h5 class="modal-title" id="exampleModalLabel">Order information</h5>
+                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                          
+                                                          
+                                                                      <label class="col-form-label"  type="text" >Order Id:</label>
+                                                                      <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ls2.orderId}}</label>
+                                
+                                                          
+                                                                      <br>
+                                                          
+                                                                      <label class="col-form-label"  type="text" >Clinet Name:</label>
+                                                                      <label class="col-form-label"  type="text" >&nbsp; {{ls2.user.name}}</label>
+                                                          
+                                                                     <br>
+                                                                     <label class="col-form-label"  type="text" >Date:</label>
+                                                                     <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ls2.date}}</label>
+                                                          
+                                                                 <br>
+                                
+                                                                     <label class="col-form-label"  type="text" >Price:</label>
+                                                                     <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{total2}}$</label>
+                                                                 <br>
+                                                                     
+                                                                     <label class="col-form-label"  type="text" >Products List:</label>
+                                                                     
+                                                                 
 
-                                                    @endeach
-                                                    </td>
-                                                    <td class="process">{{total2}}$</td>
+                                                                     @set('x1',0)
+                                                                     @each(ls21 in ls2.items) 
+                                                                         {{--  @if($loop.index==0)   --}}
+                                                                         <br>
+                                                                         <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$loop.index+1}}  -  {{ls21.product.title}} X ({{ls21.quantity}})</label>
+                                                                     @endeach
+
+                                                                    </div>                          
+                                                                    </div>
+                                                                <div class="modal-footer">
+                                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                                                </div>
+                                                              </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>   
+                                
+                                                    {{--  form1  --}}
+            
                                                     <td> 
                                                         <div class="table-data-feature">
                                                             <button   class="item"   data-toggle="tooltip" data-placement="top" title="Send to Client" onclick=" confirm(' Are you ready to prepare this order --{{ls2.orderId}}-- ');location.href='admin/delete/{{ls2._id}}?item=order'">
                                                                 <i class="zmdi zmdi-check"></i>
                                                             </button>  
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More" data-toggle="modal"  data-target="#orderDetailModal" >
+                                                            <button class="item"  data-placement="top" title="More" data-toggle="modal"  data-target="#orderdetailModal{{$loop.index}}" >
                                                                 <i class="zmdi zmdi-more"></i>
                                                             </button>             
                                                         </div>
@@ -602,8 +644,56 @@
                                 </table>
                             </div>
                         <!-- END DATA TABLE -->
+
                         </div>
                     </div>
+
+                    <div class="modal fade" id="orderdetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Order information</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                          
+                          
+                                      <label class="col-form-label"  type="text" >Order Id:</label>
+                                      <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Agora-2ywh0aiykg9hmmkt</label>
+
+                          
+                                      <br>
+                          
+                                      <label class="col-form-label"  type="text" >Clinet Name:</label>
+                                      <label class="col-form-label"  type="text" >&nbsp; Imad Mansour</label>
+                          
+                                     <br>
+                                     <label class="col-form-label"  type="text" >Date:</label>
+                                     <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22 oct 2020 12:34 PM</label>
+                          
+                                 <br>
+
+                                     <label class="col-form-label"  type="text" >Price:</label>
+                                     <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1242$</label>
+                                 
+                                     
+                                    </div>                          
+                                   <!--dont touch it-->
+                                    </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>   
+
+                      
                     <div class="row" id="prls">
                         <div class="col-md-12">
                             <h2 class="title-1 m-b-25" >Products List</h2>
