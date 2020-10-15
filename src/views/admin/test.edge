@@ -609,7 +609,7 @@
                                                                      @each(ls21 in ls2.items) 
                                                                          {{--  @if($loop.index==0)   --}}
                                                                          <br>
-                                                                         <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$loop.index+1}}  -  {{ls21.product.title}} X ({{ls21.quantity}})</label>
+                                                                         <label class="col-form-label"  type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$loop.index+1}}  -  {{ls21.product.title}} ......x({{ls21.quantity}})</label>
                                                                      @endeach
 
                                                                     </div>                          
@@ -983,38 +983,14 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Imad Eddine</td>
-                                                            <td class="text-right">$119,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Yacine kharoubi</td>
-                                                            <td class="text-right">$70,261.65</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Feddag Mohammed</td>
-                                                            <td class="text-right">$46,399.22</td>
-                                                        </tr>
+                                                            <td class="text-right">
+                                                                @each(ls33 in totalearnings)
+                                                                <td class="text-right">{{ls33.totalearnings}}DA</td>
+                                                                @endeach
 
-                                                        <tr>
-                                                            <td>Taous Amara</td>
-                                                            <td class="text-right">$35,364.90</td>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Iness </td>
-                                                            <td class="text-right">$20,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Imad Eddine</td>
-                                                            <td class="text-right">$119,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Yacine kharoubi</td>
-                                                            <td class="text-right">$70,261.65</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Feddag Mohammed</td>
-                                                            <td class="text-right">$46,399.22</td>
-                                                        </tr>
-                                                    </tbody>
+                                                         </tbody>
                                                 </table>
                                             </div>
                                         </div>

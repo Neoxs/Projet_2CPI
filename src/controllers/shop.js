@@ -168,7 +168,6 @@ exports.postOrder = async (req, res) => {
 
       Total.findOne({}, function (err, ttl) {
          if (err) return handleError(err);
-         console.log(ttl.totalearnings);
          Total.findOneAndUpdate({_id: ttl._id}, {$set: { totalearnings: ttl.totalearnings+total}}, {upsert: true}, function(err, doc) {
             if (err) return res.send(500, {error: err});
             
