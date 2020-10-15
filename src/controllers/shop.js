@@ -122,6 +122,7 @@ exports.getCart = async(req,res) => {
          path: '/cart',
          pageTitle: 'Cart',
          items,
+         todayDate: Date.now(),
          total,
          isAuthenticated: req.session.isAuthenticated
       })
@@ -159,9 +160,15 @@ exports.postOrder = async (req, res) => {
             name: req.session.user.username,
             userId: req.session.user._id
          },
+         shippingInfo: {
+            phone: req.body.phone,
+            street: req.body.street,
+            town: req.body.town,
+            date: req.body.date ? new Date(req.body.date) : null
+         },
          items: products,
-         orderId: uniqid('AGORA-'),
-         total: parseInt(total)
+         orderId: uniqid.time('AGORA-'),
+         total: req.body.street && req.body.town ? parseInt(total) + 100 : parseInt(total)
       })
       await order.save()
       //console.log(order)

@@ -26,8 +26,8 @@
                 <div class="head" style="background-color: #fff; border-bottom: grey 1px solid; padding-bottom: 5px; font-size: large;"><b>Shipping Addresse</b></div>
 
                 <div class="element" style="padding: 3%;">
-                    <p><span id="attrubute"><b>Street:</b>  </span><span id="value">value</span></p>
-                    <p><span id="attrubute"><b>Town:</b> </span><span id="value">value</span></p>
+                    <p><span id="attrubute"><b>Street:</b>  </span><span id="value">{{order.shippingInfo.street ? order.shippingInfo.street : ''}}</span></p>
+                    <p><span id="attrubute"><b>Town:</b> </span><span id="value">{{order.shippingInfo.town ? order.shippingInfo.town : ''}}</span></p>
                 </div>
             </div>
         </div>
@@ -57,7 +57,12 @@
                         <td>{{item.quantity * item.product.price}} DZD</td>
                     </tr>
                 @endeach
-
+                 
+                <tr>
+                        <td><b>Shipping</b></td>
+                        <td></td>
+                        <td><b>{{ order.shippingInfo.street ? '100 DZD' : '0 DZD'}}</b></td>
+                    </tr>
                 <tr>
                     <td><b>TOTAL</b></td>
                     <td></td>
@@ -65,6 +70,14 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="modal-footer">
+            <form action="/get-bill" id='buyShop' method="post">
+                <button class="btn btn-primary">Download Bill</button>
+            </form>
+        </div>
+            
+
     </div>
     <script>
         function formatDate(date) {

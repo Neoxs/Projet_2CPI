@@ -10,7 +10,6 @@ exports.generatePDF = async(order) => {
     generateHeader(doc);
     generateCustomerInformation(doc, order);
     generateInvoiceTable(doc, order);
-    generateFooter(doc);
 
     doc.end();
     return doc
@@ -23,20 +22,9 @@ function generateHeader(doc) {
       .fontSize(20)
       .text("AGORE")
       .fontSize(10)
-      .text("123 Main Street", 200, 65, { align: "right" })
-      .text("New York, NY, 10025", 200, 80, { align: "right" })
+      .text("Boulevard Emir Abdelkader, N26", 200, 65, { align: "right" })
+      .text("SIDI-BEL-ABBES", 200, 80, { align: "right" })
       .moveDown();
-}
-
-function generateFooter(doc) {
-    doc
-      .fontSize(10)
-      .text(
-        "Payment is due within 15 days. Thank you for your business.",
-        50,
-        780,
-        { align: "center", width: 500 }
-      );
 }
 
 function generateCustomerInformation(doc, order) {
@@ -57,10 +45,10 @@ function generateCustomerInformation(doc, order) {
     .text(order.orderId, 150, customerInformationTop)
     .font("Helvetica")
     .text("Order Date:", 50, customerInformationTop + 15)
-    .text(formatDate(new Date()), 150, customerInformationTop + 15)
-    .text("Balance Due:", 50, customerInformationTop + 30)
+    .text(formatDate(order.shippingInfo.date ? order.shippingInfo.date : new Date()), 150, customerInformationTop + 15)
+    .text("Shipping tax:", 50, customerInformationTop + 30)
     .text(
-      formatCurrency(0),
+      formatCurrency(order.shippingInfo.street ? 100 : 0),
       150,
       customerInformationTop + 30
     )
@@ -68,13 +56,8 @@ function generateCustomerInformation(doc, order) {
     .font("Helvetica-Bold")
     .text(order.user.name, 300, customerInformationTop)
     .font("Helvetica")
-    .text('invoice.shipping.address', 300, customerInformationTop + 15)
-    .text(
-      'Wiaam' +
-        ", " +
-        'Sidi-Bel-Abbes' +
-        ", " +
-        'Algeria',
+    .text(order.shippingInfo.street, 300, customerInformationTop + 15)
+    .text(order.shippingInfo.town,
       300,
       customerInformationTop + 30
     )
@@ -156,7 +139,8 @@ function formatCurrency(cents) {
     return ((cents * 100) / 100).toFixed(2) + " DZD";
 }
 
-function formatDate(date) {
+function formatDate(data) {
+    const date = new Date(data)
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();

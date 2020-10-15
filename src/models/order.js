@@ -19,6 +19,12 @@ const orderSchema = new mongoose.Schema({
             quantity: { type: Number, required: true }
         }
     ],
+    shippingInfo: {
+        phone: { type: String },
+        street: { type: String },
+        town: { type: String },
+        date: { type: Date }
+    },
     user: {
         name: {
             type: String,
