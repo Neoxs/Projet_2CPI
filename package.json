@@ -21,7 +21,7 @@
     "custom-env": "^2.0.1",
     "edge": "^7.10.1",
     "edge.js": "^1.1.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-edge": "^2.0.2",
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
